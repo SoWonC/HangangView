@@ -8,19 +8,7 @@
        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
 
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>classpath:/egovframework/message/message-common</value>
-				<value>classpath:/org/egovframe/rte/fdl/idgnr/messages/idgnr</value>
-				<value>classpath:/org/egovframe/rte/fdl/property/messages/properties</value>
-			</list>
-		</property>
-		<property name="cacheSeconds">
-			<value>60</value>
-		</property>
-	</bean>
-	
+
 	<bean id="leaveaTrace" class="org.egovframe.rte.fdl.cmmn.trace.LeaveaTrace">
 		<property name="traceHandlerServices">
 			<list>
