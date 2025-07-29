@@ -4,11 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
 	
-	<!-- 테스트 실행용 --> 
-	<jdbc:embedded-database id="dataSource" type="HSQL">
-		<jdbc:script location= "classpath:/db/sampledb.sql"/>
-	</jdbc:embedded-database>
-     
+<!--	&lt;!&ndash; 테스트 실행용 &ndash;&gt; -->
+<!--	<jdbc:embedded-database id="dataSource" type="HSQL">-->
+<!--		<jdbc:script location= "classpath:/db/sampledb.sql"/>-->
+<!--	</jdbc:embedded-database>-->
+<!--     -->
      
     <!-- hsql (테스트용 메모리 DB)
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -35,5 +35,12 @@
         <property name="password" value="password"/>
     </bean>
     -->
-    
+	<!-- PostgreSQL DataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/yourdb"/> <!-- ← DB명으로 수정 -->
+		<property name="username" value="youruser"/> <!-- ← 실제 계정으로 수정 -->
+		<property name="password" value="yourpassword"/> <!-- ← 실제 비밀번호로 수정 -->
+	</bean>
+
 </beans>
