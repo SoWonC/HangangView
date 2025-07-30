@@ -1,14 +1,14 @@
-// // === 지도 및 상태 설정 ===
-// const initialCenter = [14137133.82, 4511912.58];
-// const initialZoom = 10;
-// let currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
-//
-// let isWaterMarkerVisible = false;
-// let isDamMarkerVisible = false;
-// let isWeatherMarkerVisible = false;
-// let isCctvMarkerVisible = false;
-// let areAllMarkersVisible = false;
-//
+// === 지도 및 상태 설정 ===
+const initialCenter = [14137133.82, 4511912.58];
+const initialZoom = 10;
+let currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+
+let isWaterMarkerVisible = false;
+let isDamMarkerVisible = false;
+let isWeatherMarkerVisible = false;
+let isCctvMarkerVisible = false;
+let areAllMarkersVisible = false;
+
 const vmap = new vw.ol3.Map("vmap", vw.ol3.MapOptions);
 vmap.getView().setCenter(initialCenter);
 vmap.getView().setZoom(initialZoom);
@@ -69,6 +69,54 @@ function hidePopup() {
 
 function hideMarker() {
     markerLayer.hideMarker(selectMarker);
+}
+
+function toggleWhiteMap() {
+    if(currentBasemapType === vw.ol3.BasemapType.GRAPHIC_WHITE) {
+        // 현재 백지도 상태라면 기본 지도 타입으로 되돌림
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        // 백지도 상태가 아니라면 백지도 타입으로 설정
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_WHITE);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_WHITE;
+    }
+}
+
+function toggleNightMap() {
+    if(currentBasemapType === vw.ol3.BasemapType.GRAPHIC_NIGHT) {
+        // 현재 야간지도 타입이라면 기본 지도 타입으로 되돌림
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        // 현재 야간지도 타입이 아니라면 야간지도 타입으로 설정
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_NIGHT);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_NIGHT;
+    }
+}
+
+function toggleAerialMap() {
+    if(currentBasemapType === vw.ol3.BasemapType.PHOTO) {
+        // 현재 항공사진 타입이라면 기본 지도 타입으로 되돌림
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        // 현재 항공사진 타입이 아니라면 항공사진 타입으로 설정
+        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO);
+        currentBasemapType = vw.ol3.BasemapType.PHOTO;
+    }
+}
+
+function toggleHybridMap() {
+    if(currentBasemapType === vw.ol3.BasemapType.PHOTO_HYBRID) {
+        // 현재 하이브리드 타입이라면 기본 지도 타입으로 되돌림
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        // 현재 하이브리드 타입이 아니라면 하이브리드 타입으로 설정
+        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO_HYBRID);
+        currentBasemapType = vw.ol3.BasemapType.PHOTO_HYBRID;
+    }
 }
 
 // function showMarker() {
