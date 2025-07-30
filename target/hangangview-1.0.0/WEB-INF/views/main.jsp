@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>api2.0_maptest</title>
+    <title>한강뷰</title>
 
     <!-- 외부 CSS 및 라이브러리 -->
     <link rel="stylesheet" href="<c:url value='/resources/css/main.css' />">
@@ -98,6 +98,10 @@
             <button type="button" onclick="toggleAerialMap();">항공사진</button>
             <br><br>
             <button type="button" onclick="toggleHybridMap();">하이브리드</button>
+            <br><br>
+            <button type="button" onclick="hideAllMarkers();">전체 표시</button>
+            <br><br>
+            <button type="button" onclick="showAllMarkers();">전체 지우기</button>
             <br><br><br><br>
             <input type="text" id="param" value="" size="20"/>
         </div>

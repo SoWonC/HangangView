@@ -36,6 +36,39 @@ function toggleAllMarkers() {
     areAllMarkersVisible = !areAllMarkersVisible;
 }
 
+// 수문 마커 토글 함수
+function toggleWaterMarker() {
+    if(isWaterMarkerVisible) {
+        hidewaterMarker();
+        isWaterMarkerVisible = false;
+    } else {
+        showwaterMarker();
+        isWaterMarkerVisible = true;
+    }
+}
+
+// 댐 마커 토글 함수
+function toggleDamMarker() {
+    if(isDamMarkerVisible) {
+        hidedamMarker();
+        isDamMarkerVisible = false;
+    } else {
+        showdamMarker();
+        isDamMarkerVisible = true;
+    }
+}
+
+// 기상 마커 토글 함수
+function toggleWeatherMarker() {
+    if(isWeatherMarkerVisible) {
+        hideweatherMarker();
+        isWeatherMarkerVisible = false;
+    } else {
+        showweatherMarker();
+        isWeatherMarkerVisible = true;
+    }
+}
+
 function hideAllMarkers() {
     waterMarkerLayer.hideAllMarker();
     damMarkerLayer.hideAllMarker();
@@ -119,12 +152,19 @@ function hideMarker() {
     markerLayer.hideMarker(selectMarker);
 }
 
-// function showMarker() {
-//     [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
-//         layer.showMarker(selectMarker);
-//     });
-//     $('#param').val('');
-// }
+function showMarker() {
+    [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
+        layer.showMarker(selectMarker);
+    });
+    $('#param').val('');
+}
+
+
+
+// === 팝업 이동 ===
+function openPopup(url, code) {
+    window.open(url + code, "_blank", "width=1200, height=600");
+}
 
 // === 마커 레이어 추가 ===
 function addMarkerLayers() {
@@ -133,11 +173,6 @@ function addMarkerLayers() {
     vmap.addLayer(damMarkerLayer);
     vmap.addLayer(cctvMarkerLayer);
 }
-
-// === 팝업 이동 ===
-// function openPopup(url, code) {
-//     window.open(url + code, "_blank", "width=1200, height=600");
-// }
 
 // === 마커 추가 예시 (수문) ===
 // function addMarkerwater() {
@@ -184,7 +219,7 @@ function addMarkerLayers() {
 
 // === 초기 실행 ===
 addMarkerLayers();
-// addMarkerwater();
-// addMarkerweather();
-// addMarkerdam();
+addMarkerwater();
+addMarkerweather();
+addMarkerdam();
 // addMarkercctv();

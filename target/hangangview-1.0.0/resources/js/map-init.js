@@ -9,10 +9,12 @@ let isWeatherMarkerVisible = false;
 let isCctvMarkerVisible = false;
 let areAllMarkersVisible = false;
 
+// === 지도 객체 생성 ===
 const vmap = new vw.ol3.Map("vmap", vw.ol3.MapOptions);
 vmap.getView().setCenter(initialCenter);
 vmap.getView().setZoom(initialZoom);
 
+// === 마커 레이어 초기화 ===
 const waterMarkerLayer = new vw.ol3.layer.Marker(vmap);
 const weatherMarkerLayer = new vw.ol3.layer.Marker(vmap);
 const damMarkerLayer = new vw.ol3.layer.Marker(vmap);
@@ -34,6 +36,39 @@ function toggleAllMarkers() {
     areAllMarkersVisible = !areAllMarkersVisible;
 }
 
+// 수문 마커 토글 함수
+function toggleWaterMarker() {
+    if(isWaterMarkerVisible) {
+        hidewaterMarker();
+        isWaterMarkerVisible = false;
+    } else {
+        showwaterMarker();
+        isWaterMarkerVisible = true;
+    }
+}
+
+// 댐 마커 토글 함수
+function toggleDamMarker() {
+    if(isDamMarkerVisible) {
+        hidedamMarker();
+        isDamMarkerVisible = false;
+    } else {
+        showdamMarker();
+        isDamMarkerVisible = true;
+    }
+}
+
+// 기상 마커 토글 함수
+function toggleWeatherMarker() {
+    if(isWeatherMarkerVisible) {
+        hideweatherMarker();
+        isWeatherMarkerVisible = false;
+    } else {
+        showweatherMarker();
+        isWeatherMarkerVisible = true;
+    }
+}
+
 function hideAllMarkers() {
     waterMarkerLayer.hideAllMarker();
     damMarkerLayer.hideAllMarker();
@@ -52,8 +87,54 @@ function showAllMarkers() {
 
 // === 지도 타입 전환 ===
 function toggleBasemap(targetType) {
-    currentBasemapType = (currentBasemapType === targetType) ? vw.ol3.BasemapType.GRAPHIC : targetType;
+    currentBasemapType = (currentBasemapType === targetType)
+        ? vw.ol3.BasemapType.GRAPHIC
+        : targetType;
     vmap.setBasemapType(currentBasemapType);
+}
+
+// === 백지도 토글 ===
+function toggleWhiteMap() {
+    if (currentBasemapType === vw.ol3.BasemapType.GRAPHIC_WHITE) {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_WHITE);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_WHITE;
+    }
+}
+
+// === 야간지도 토글 ===
+function toggleNightMap() {
+    if (currentBasemapType === vw.ol3.BasemapType.GRAPHIC_NIGHT) {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_NIGHT);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_NIGHT;
+    }
+}
+
+// === 항공사진 토글 ===
+function toggleAerialMap() {
+    if (currentBasemapType === vw.ol3.BasemapType.PHOTO) {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO);
+        currentBasemapType = vw.ol3.BasemapType.PHOTO;
+    }
+}
+
+// === 하이브리드 토글 ===
+function toggleHybridMap() {
+    if (currentBasemapType === vw.ol3.BasemapType.PHOTO_HYBRID) {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO_HYBRID);
+        currentBasemapType = vw.ol3.BasemapType.PHOTO_HYBRID;
+    }
 }
 
 // === 팝업/선택 마커 ===
@@ -71,108 +152,60 @@ function hideMarker() {
     markerLayer.hideMarker(selectMarker);
 }
 
-function toggleWhiteMap() {
-    if(currentBasemapType === vw.ol3.BasemapType.GRAPHIC_WHITE) {
-        // 현재 백지도 상태라면 기본 지도 타입으로 되돌림
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
-    } else {
-        // 백지도 상태가 아니라면 백지도 타입으로 설정
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_WHITE);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_WHITE;
-    }
+function showMarker() {
+    [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
+        layer.showMarker(selectMarker);
+    });
+    $('#param').val('');
 }
 
-function toggleNightMap() {
-    if(currentBasemapType === vw.ol3.BasemapType.GRAPHIC_NIGHT) {
-        // 현재 야간지도 타입이라면 기본 지도 타입으로 되돌림
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
-    } else {
-        // 현재 야간지도 타입이 아니라면 야간지도 타입으로 설정
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC_NIGHT);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC_NIGHT;
-    }
+
+
+// === 팝업 이동 ===
+function openPopup(url, code) {
+    window.open(url + code, "_blank", "width=1200, height=600");
 }
 
-function toggleAerialMap() {
-    if(currentBasemapType === vw.ol3.BasemapType.PHOTO) {
-        // 현재 항공사진 타입이라면 기본 지도 타입으로 되돌림
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
-    } else {
-        // 현재 항공사진 타입이 아니라면 항공사진 타입으로 설정
-        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO);
-        currentBasemapType = vw.ol3.BasemapType.PHOTO;
-    }
-}
-
-function toggleHybridMap() {
-    if(currentBasemapType === vw.ol3.BasemapType.PHOTO_HYBRID) {
-        // 현재 하이브리드 타입이라면 기본 지도 타입으로 되돌림
-        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
-        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
-    } else {
-        // 현재 하이브리드 타입이 아니라면 하이브리드 타입으로 설정
-        vmap.setBasemapType(vw.ol3.BasemapType.PHOTO_HYBRID);
-        currentBasemapType = vw.ol3.BasemapType.PHOTO_HYBRID;
-    }
-}
-
-// function showMarker() {
-//     [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
-//         layer.showMarker(selectMarker);
-//     });
-//     $('#param').val('');
-// }
-//
-// // === 마커 레이어 추가 ===
+// === 마커 레이어 추가 ===
 function addMarkerLayers() {
     vmap.addLayer(waterMarkerLayer);
     vmap.addLayer(weatherMarkerLayer);
     vmap.addLayer(damMarkerLayer);
     vmap.addLayer(cctvMarkerLayer);
 }
-//
-// // === 팝업 이동 ===
-// function openPopup(url, code) {
-//     window.open(url + code, "_blank", "width=1200, height=600");
-// }
-//
-// // === 마커 추가 예시 (수문) ===
+
+// === 마커 추가 예시 (수문) ===
 // function addMarkerwater() {
 //     const dtoList = [];
 //     <c:forEach var="dto" items="${waterso}">
 //         dtoList.push({
-//         x: '${dto.lon}',
-//         y: '${dto.lat}',
-//         epsg: 'EPSG:4326',
-//         title: '<a href="javascript:openPopup(\'http://localhost:8809/project_1108/waterdata?wlobscd=${dto.wlobscd}\')">${dto.obsnm}</a>',
-//         contents: '해발 고도: ${dto.gdt}' +
-//         '<br>경보 수위: ${dto.attwl}' +
-//         '<br>경고 수위: ${dto.wrnwl}' +
-//         '<br>주의 수위: ${dto.almwl}' +
-//         '<br>안전 수위: ${dto.srswl}' +
-//         '<br>최고 수위: ${dto.pfh}' +
-//         '<br>홍수 위험 예고: ${dto.fstnyn}',
-//         iconUrl: '//img.icons8.com/ultraviolet/40/bridge.png',
-//         text: {
-//         offsetX: 0.5,
-//         offsetY: 20,
-//         font: '12px Calibri, sans-serif',
-//         fill: { color: '#000' },
-//         stroke: { color: '#fff', width: 2 }
-//     },
-//         attr: { id: 'maker01', name: '속성명1' }
-//     });
+//             x: '${dto.lon}',
+//             y: '${dto.lat}',
+//             epsg: 'EPSG:4326',
+//             title: '<a href="javascript:openPopup(\'http://localhost:8809/project_1108/waterdata?wlobscd=${dto.wlobscd}\')">${dto.obsnm}</a>',
+//             contents: '해발 고도: ${dto.gdt}' +
+//                       '<br>경보 수위: ${dto.attwl}' +
+//                       '<br>경고 수위: ${dto.wrnwl}' +
+//                       '<br>주의 수위: ${dto.almwl}' +
+//                       '<br>안전 수위: ${dto.srswl}' +
+//                       '<br>최고 수위: ${dto.pfh}' +
+//                       '<br>홍수 위험 예고: ${dto.fstnyn}',
+//             iconUrl: '//img.icons8.com/ultraviolet/40/bridge.png',
+//             text: {
+//                 offsetX: 0.5,
+//                 offsetY: 20,
+//                 font: '12px Calibri, sans-serif',
+//                 fill: { color: '#000' },
+//                 stroke: { color: '#fff', width: 2 }
+//             },
+//             attr: { id: 'maker01', name: '속성명1' }
+//         });
 //     </c:forEach>
 //
 //     dtoList.forEach(dto => waterMarkerLayer.addMarker(dto));
 // }
-//
-//
-//
-// // === 지도 클릭 이벤트 ===
+
+// === 지도 클릭 이벤트 ===
 // vmap.on('click', function (evt) {
 //     const feature = vmap.forEachFeatureAtPixel(evt.pixel, (feature) => {
 //         $('#param').val(feature.get('id'));
@@ -183,11 +216,10 @@ function addMarkerLayers() {
 //         vmap.getView().setZoom(12);
 //     });
 // });
-//
-//
+
 // === 초기 실행 ===
 addMarkerLayers();
-// addMarkerwater();
-// // addMarkerweather();
-// // addMarkerdam();
-// // addMarkercctv();
+addMarkerwater();
+addMarkerweather();
+addMarkerdam();
+// addMarkercctv();
