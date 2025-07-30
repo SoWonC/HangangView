@@ -1,0 +1,82 @@
+[33m669b9df[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop_home[m[33m)[m HEAD@{0}: checkout: moving from develop to develop_home
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{1}: checkout: moving from develop_home to develop
+[33m669b9df[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop_home[m[33m)[m HEAD@{2}: commit (merge): Merge branch 'develop' into develop_home
+[33m4b013a8[m[33m ([m[1;31morigin/develop_home[m[33m)[m HEAD@{3}: checkout: moving from develop to develop_home
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{4}: checkout: moving from develop_home to develop
+[33m4b013a8[m[33m ([m[1;31morigin/develop_home[m[33m)[m HEAD@{5}: checkout: moving from develop to develop_home
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{6}: checkout: moving from develop_home to develop
+[33m4b013a8[m[33m ([m[1;31morigin/develop_home[m[33m)[m HEAD@{7}: commit (amend): feat/refactor: 홈 페이지 연결 및 구버전 한강페이지 덮어씌우고 리팩토링
+[33m6558470[m HEAD@{8}: commit (amend): feat: 홈 페이지 연결
+[33me824679[m HEAD@{9}: rebase (finish): returning to refs/heads/develop_home
+[33me824679[m HEAD@{10}: rebase (squash): # This is a combination of 4 commits.
+[33m0f822f4[m HEAD@{11}: rebase (squash):  This is a combination of 2 commits.
+[33m7a243a2[m HEAD@{12}: rebase (continue): # This is a combination of 4 commits.
+[33mee2efac[m HEAD@{13}: rebase (squash): # This is a combination of 4 commits.
+[33m30642c8[m HEAD@{14}: rebase (squash): # This is a combination of 3 commits.
+[33m3338a25[m HEAD@{15}: rebase (squash): # This is a combination of 2 commits.
+[33m1750a62[m HEAD@{16}: rebase (pick): feat: 홈 페이지 연결
+[33m19d421c[m HEAD@{17}: rebase (squash): 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33ma0175f7[m HEAD@{18}: rebase (start): checkout HEAD~8
+[33me4ab85d[m HEAD@{19}: commit: feat/refactor : 구버전 한강페이지 덮어씌우고 리팩토링
+[33m9ecd401[m HEAD@{20}: pull --no-stat -v --progress origin develop_home: Merge made by the 'ort' strategy.
+[33m8a0cde2[m HEAD@{21}: checkout: moving from develop to develop_home
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{22}: checkout: moving from develop_home to develop
+[33m8a0cde2[m HEAD@{23}: rebase (finish): returning to refs/heads/develop_home
+[33m8a0cde2[m HEAD@{24}: rebase (pick): feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33m455c24f[m HEAD@{25}: rebase (pick): feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33m660969f[m HEAD@{26}: rebase (pick): feat: 홈 페이지 연결
+[33m48f4639[m HEAD@{27}: rebase (pick): feat: 홈 페이지 연결
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{28}: rebase (start): checkout refs/heads/develop
+[33md03c3e2[m HEAD@{29}: checkout: moving from develop to develop_home
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{30}: rebase (finish): returning to refs/heads/develop
+[33m463cd50[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m HEAD@{31}: rebase (squash): feat/refactor : 구버전 한강페이지 덮어씌우고 리팩토링
+[33m6e41f9d[m HEAD@{32}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{33}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{34}: checkout: moving from develop to develop_home
+[33m68f3b0a[m HEAD@{35}: rebase (finish): returning to refs/heads/develop
+[33m68f3b0a[m HEAD@{36}: rebase (squash): feat/refactor : 구버전 한강페이지 덮어씌우고 리팩토링
+[33m152e798[m HEAD@{37}: rebase (squash): # This is a combination of 2 commits.
+[33m12d8ccb[m HEAD@{38}: rebase (pick): feat/refactor : 구버전 한강페이지 덮어씌우고 리팩토링
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{39}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{40}: rebase (abort): returning to refs/heads/develop
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{41}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{42}: rebase (abort): returning to refs/heads/develop
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{43}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{44}: rebase (abort): returning to refs/heads/develop
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{45}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{46}: rebase (abort): returning to refs/heads/develop
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{47}: rebase (start): checkout HEAD~3
+[33m22a9bbe[m HEAD@{48}: pull --no-stat -v --progress origin develop: Merge made by the 'ort' strategy.
+[33m6e41f9d[m HEAD@{49}: commit (amend): feat/refactor : 구버전 한강페이지 덮어씌우고 리팩토링
+[33meff79a1[m HEAD@{50}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{51}: checkout: moving from develop to develop_home
+[33me192fd7[m HEAD@{52}: pull --no-stat -v --progress origin develop: Merge made by the 'ort' strategy.
+[33m5cf44b8[m HEAD@{53}: commit: feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33md03c3e2[m HEAD@{54}: merge develop_home: Fast-forward
+[33ma0175f7[m HEAD@{55}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{56}: checkout: moving from develop to develop_home
+[33ma0175f7[m HEAD@{57}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{58}: checkout: moving from develop to develop_home
+[33ma0175f7[m HEAD@{59}: reset: moving to a0175f7cbd63d10d16e769089fc53fc14f81bc2b
+[33meff79a1[m HEAD@{60}: commit: feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33ma0175f7[m HEAD@{61}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{62}: rebase: checkout develop_home
+[33ma0175f7[m HEAD@{63}: checkout: moving from develop_home to develop
+[33md03c3e2[m HEAD@{64}: commit: feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33m3f9d87e[m HEAD@{65}: commit: feat/refactor : 구버전 한강페이지 덮어씌우고 리팻토링
+[33m0fbbdd8[m HEAD@{66}: commit: feat: 홈 페이지 연결
+[33mcbde1a9[m HEAD@{67}: commit: feat: 홈 페이지 연결
+[33ma0175f7[m HEAD@{68}: checkout: moving from develop to develop_home
+[33ma0175f7[m HEAD@{69}: rebase (finish): returning to refs/heads/develop
+[33ma0175f7[m HEAD@{70}: rebase (start): checkout 6cd8a2c
+[33ma0175f7[m HEAD@{71}: rebase (finish): returning to refs/heads/develop
+[33ma0175f7[m HEAD@{72}: rebase (squash): 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33m8db8fd5[m HEAD@{73}: rebase (squash): # This is a combination of 2 commits.
+[33m37e85f8[m HEAD@{74}: rebase (start): checkout 6cd8a2c
+[33m43a9cb0[m HEAD@{75}: pull --no-stat -v --progress origin develop: Merge made by the 'ort' strategy.
+[33m0665ec0[m HEAD@{76}: commit (amend): 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33mdc7db0f[m HEAD@{77}: commit: 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33m42de080[m HEAD@{78}: commit: 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33m37e85f8[m HEAD@{79}: commit: 전자정부프레임워크 불필요 파일 제거 및 MVC 구조 초기 세팅
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{80}: checkout: moving from master to develop
+[33m6cd8a2c[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{81}: commit (initial): init: add eGovFrame base project
