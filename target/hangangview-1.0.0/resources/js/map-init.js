@@ -13,78 +13,64 @@ const vmap = new vw.ol3.Map("vmap", vw.ol3.MapOptions);
 vmap.getView().setCenter(initialCenter);
 vmap.getView().setZoom(initialZoom);
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     setTimeout(() => {
-//         window.vmap = new vw.ol3.Map("vmap", {
-//             basemapType: vw.ol3.BasemapType.GRAPHIC,
-//             controlDensity: vw.ol3.DensityType.EMPTY,
-//             interactionDensity: vw.ol3.DensityType.BASIC,
-//             animation: true,
-//             zoomControl: true
-//         });
-//     }, 300); // 300~500ms 정도면 충분
-// });
+const waterMarkerLayer = new vw.ol3.layer.Marker(vmap);
+const weatherMarkerLayer = new vw.ol3.layer.Marker(vmap);
+const damMarkerLayer = new vw.ol3.layer.Marker(vmap);
+const cctvMarkerLayer = new vw.ol3.layer.Marker(vmap);
 
+// === 마커 토글 함수 ===
+function toggleMarker(layer, stateVar) {
+    if (window[stateVar]) {
+        layer.hideAllMarker();
+        window[stateVar] = false;
+    } else {
+        layer.showAllMarker();
+        window[stateVar] = true;
+    }
+}
 
+function toggleAllMarkers() {
+    areAllMarkersVisible ? hideAllMarkers() : showAllMarkers();
+    areAllMarkersVisible = !areAllMarkersVisible;
+}
 
-// const waterMarkerLayer = new vw.ol3.layer.Marker(vmap);
-// const weatherMarkerLayer = new vw.ol3.layer.Marker(vmap);
-// const damMarkerLayer = new vw.ol3.layer.Marker(vmap);
-// const cctvMarkerLayer = new vw.ol3.layer.Marker(vmap);
-//
-// // === 마커 토글 함수 ===
-// function toggleMarker(layer, stateVar) {
-//     if (window[stateVar]) {
-//         layer.hideAllMarker();
-//         window[stateVar] = false;
-//     } else {
-//         layer.showAllMarker();
-//         window[stateVar] = true;
-//     }
-// }
-//
-// function toggleAllMarkers() {
-//     areAllMarkersVisible ? hideAllMarkers() : showAllMarkers();
-//     areAllMarkersVisible = !areAllMarkersVisible;
-// }
-//
-// function hideAllMarkers() {
-//     waterMarkerLayer.hideAllMarker();
-//     damMarkerLayer.hideAllMarker();
-//     weatherMarkerLayer.hideAllMarker();
-//     cctvMarkerLayer.hideAllMarker();
-//     isWaterMarkerVisible = isDamMarkerVisible = isWeatherMarkerVisible = isCctvMarkerVisible = false;
-// }
-//
-// function showAllMarkers() {
-//     waterMarkerLayer.showAllMarker();
-//     damMarkerLayer.showAllMarker();
-//     weatherMarkerLayer.showAllMarker();
-//     cctvMarkerLayer.showAllMarker();
-//     isWaterMarkerVisible = isDamMarkerVisible = isWeatherMarkerVisible = isCctvMarkerVisible = true;
-// }
-//
-// // === 지도 타입 전환 ===
-// function toggleBasemap(targetType) {
-//     currentBasemapType = (currentBasemapType === targetType) ? vw.ol3.BasemapType.GRAPHIC : targetType;
-//     vmap.setBasemapType(currentBasemapType);
-// }
-//
-// // === 팝업/선택 마커 ===
-// function showPopup() {
-//     [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
-//         layer.showPop(selectMarker);
-//     });
-// }
-//
-// function hidePopup() {
-//     markerLayer.hidePop(selectMarker);
-// }
-//
-// function hideMarker() {
-//     markerLayer.hideMarker(selectMarker);
-// }
-//
+function hideAllMarkers() {
+    waterMarkerLayer.hideAllMarker();
+    damMarkerLayer.hideAllMarker();
+    weatherMarkerLayer.hideAllMarker();
+    cctvMarkerLayer.hideAllMarker();
+    isWaterMarkerVisible = isDamMarkerVisible = isWeatherMarkerVisible = isCctvMarkerVisible = false;
+}
+
+function showAllMarkers() {
+    waterMarkerLayer.showAllMarker();
+    damMarkerLayer.showAllMarker();
+    weatherMarkerLayer.showAllMarker();
+    cctvMarkerLayer.showAllMarker();
+    isWaterMarkerVisible = isDamMarkerVisible = isWeatherMarkerVisible = isCctvMarkerVisible = true;
+}
+
+// === 지도 타입 전환 ===
+function toggleBasemap(targetType) {
+    currentBasemapType = (currentBasemapType === targetType) ? vw.ol3.BasemapType.GRAPHIC : targetType;
+    vmap.setBasemapType(currentBasemapType);
+}
+
+// === 팝업/선택 마커 ===
+function showPopup() {
+    [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
+        layer.showPop(selectMarker);
+    });
+}
+
+function hidePopup() {
+    markerLayer.hidePop(selectMarker);
+}
+
+function hideMarker() {
+    markerLayer.hideMarker(selectMarker);
+}
+
 // function showMarker() {
 //     [waterMarkerLayer, weatherMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
 //         layer.showMarker(selectMarker);
@@ -93,12 +79,12 @@ vmap.getView().setZoom(initialZoom);
 // }
 //
 // // === 마커 레이어 추가 ===
-// function addMarkerLayers() {
-//     vmap.addLayer(waterMarkerLayer);
-//     vmap.addLayer(weatherMarkerLayer);
-//     vmap.addLayer(damMarkerLayer);
-//     vmap.addLayer(cctvMarkerLayer);
-// }
+function addMarkerLayers() {
+    vmap.addLayer(waterMarkerLayer);
+    vmap.addLayer(weatherMarkerLayer);
+    vmap.addLayer(damMarkerLayer);
+    vmap.addLayer(cctvMarkerLayer);
+}
 //
 // // === 팝업 이동 ===
 // function openPopup(url, code) {
@@ -151,8 +137,8 @@ vmap.getView().setZoom(initialZoom);
 // });
 //
 //
-// // === 초기 실행 ===
-// addMarkerLayers();
+// === 초기 실행 ===
+addMarkerLayers();
 // addMarkerwater();
 // // addMarkerweather();
 // // addMarkerdam();
