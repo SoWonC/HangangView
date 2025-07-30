@@ -1,0 +1,85 @@
+
+* {
+    margin: 0%;
+}
+
+.top_bar {
+    position: fixed;
+    background-color: white;
+    height: 10%;
+    width: 100%;
+    border: 3px solid aqua;
+}
+
+.left_sideBar {
+    position: fixed;
+    height: 88.5%;
+    width: 14.7%;
+    top: 10.5%;
+    margin-left: 0%;
+    background-color: white;
+    border: 3px solid aqua;
+    flex: 1;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+.right_sideBar {
+    position: fixed;
+    width: 11%;
+    top: 10.5%;
+    right: 0;
+    background-color: aliceblue;
+}
+
+button {
+    margin-top: 2%;
+    position: fixed;
+    width: 120px;
+    height: 25px;
+    background-color: aquamarine;
+}
+
+.logout_button {
+    width: 80px;
+    height: 20px;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+}
+
+.logout_button:hover {
+    cursor: pointer;
+    background-color: darkgrey;
+}
+
+.top_bar_text {
+    text-align:right;
+    margin-right: 2%;
+}
+
+.tabs {
+    margin-right: 75.5%;
+    margin-top: 0.6%;
+}
+
+.list_tab {
+    width: 75px;
+    height: 20px;
+}
+
+.map_tab {
+    width: 75px;
+    height: 20px;
+}
+
+.sideBar_button {
+    width: 100%;
+    height:25px;
+    border: 1px solid black;
+    background-color: gray;
+    color: white;
+}
+
+.sideBar_button:hover {
+    cursor: pointer;
+}
