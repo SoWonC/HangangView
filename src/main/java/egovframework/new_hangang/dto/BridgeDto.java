@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class BridgeDto {
     private String wlobscd;
     private String agcnm;
@@ -24,3 +23,4 @@ public class BridgeDto {
     private double pfh;
     private String fstnyn;
 }
+

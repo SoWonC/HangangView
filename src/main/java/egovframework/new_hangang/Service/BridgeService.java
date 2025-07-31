@@ -76,7 +76,7 @@ public class BridgeService {
     private BridgeDto parseBridgeDto(JSONObject obj) {
         try {
             String wlobscd = obj.optString("wlobscd", "");
-            String dmobscd = obj.optString("dmobscd", "");
+//            String dmobscd = obj.optString("dmobscd", "");
             String addr = obj.optString("addr", "");
             String agcnm = obj.optString("agcnm", "");
             String etcaddr = obj.optString("etcaddr", "");
@@ -84,17 +84,16 @@ public class BridgeService {
             String relat = obj.optString("lat", "0");
             String obsnm = obj.optString("obsnm", "");
             String fstnyn = obj.optString("fstnyn", "");
-            Double gdt   = Double.parseDouble(obj.optString("gdt", "0"));
-            Double attwl = Double.parseDouble(obj.optString("attwl", "0"));
-            Double wrnwl = Double.parseDouble(obj.optString("wrnwl", "0"));
-            Double almwl = Double.parseDouble(obj.optString("almwl", "0"));
-            Double srswl = Double.parseDouble(obj.optString("srswl", "0"));
-            Double pfh   = Double.parseDouble(obj.optString("pfh", "0"));
+            double gdt   = Double.parseDouble(obj.optString("gdt", "0"));
+            double attwl = Double.parseDouble(obj.optString("attwl", "0"));
+            double wrnwl = Double.parseDouble(obj.optString("wrnwl", "0"));
+            double almwl = Double.parseDouble(obj.optString("almwl", "0"));
+            double srswl = Double.parseDouble(obj.optString("srswl", "0"));
+            double pfh   = Double.parseDouble(obj.optString("pfh", "0"));
             double lon = conversionService.conversion(relon);
             double lat = conversionService.conversion(relat);
 
-
-            return new BridgeDto(wlobscd, agcnm, obsnm, addr, etcaddr, lon, lat, gdt, attwl, wrnwl, almwl, srswl, pfh, fstnyn);
+            return new BridgeDto(wlobscd,agcnm,obsnm,addr,etcaddr,lon,lat,gdt,attwl,wrnwl,almwl,srswl,pfh,fstnyn);
 
         } catch (Exception e) {
             e.printStackTrace();
