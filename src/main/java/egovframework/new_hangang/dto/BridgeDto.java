@@ -1,6 +1,5 @@
 package egovframework.new_hangang.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter

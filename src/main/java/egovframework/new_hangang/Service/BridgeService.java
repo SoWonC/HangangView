@@ -84,15 +84,15 @@ public class BridgeService {
             String relat = obj.optString("lat", "0");
             String obsnm = obj.optString("obsnm", "");
             String fstnyn = obj.optString("fstnyn", "");
-            double gdt = 0;
-            double attwl = 0;
-            double wrnwl = 0;
-            double almwl = 0;
-            double srswl = 0;
-            double pfh = 0;
+            Double gdt   = Double.parseDouble(obj.optString("gdt", "0"));
+            Double attwl = Double.parseDouble(obj.optString("attwl", "0"));
+            Double wrnwl = Double.parseDouble(obj.optString("wrnwl", "0"));
+            Double almwl = Double.parseDouble(obj.optString("almwl", "0"));
+            Double srswl = Double.parseDouble(obj.optString("srswl", "0"));
+            Double pfh   = Double.parseDouble(obj.optString("pfh", "0"));
             double lon = conversionService.conversion(relon);
             double lat = conversionService.conversion(relat);
-            double fldlmtwl = parseDoubleSafe(obj.optString("fldlmtwl", "0"));
+
 
             return new BridgeDto(wlobscd, agcnm, obsnm, addr, etcaddr, lon, lat, gdt, attwl, wrnwl, almwl, srswl, pfh, fstnyn);
 
@@ -102,11 +102,4 @@ public class BridgeService {
         }
     }
 
-    private double parseDoubleSafe(String value) {
-        try {
-            return Double.parseDouble(value);
-        } catch (Exception e) {
-            return 0.0;
-        }
-    }
 }
