@@ -260,14 +260,14 @@ function addMarkerdam() {
                     },
                     attr: {id: "maker01", name: "속성명1"}
                 };
-                console.log(marker)
+                // console.log(marker)
                 damMarkerLayer.addMarker(marker);
             });
         })
         .catch(error => {
             console.error('마커 데이터 로딩 실패:', error);
         });
-    console.log(marker)
+    // console.log(marker)
 }
 
 //

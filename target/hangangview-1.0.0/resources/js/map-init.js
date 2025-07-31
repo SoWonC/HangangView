@@ -242,7 +242,7 @@ function addMarkerdam() {
     fetch('/hangang/api/dam')
         .then(response => response.json())
         .then(data => {
-            console.log("받은 데이터:", data);
+            // console.log("받은 데이터:", data);
             data.forEach(dto => {
                 const marker = {
                     x: dto.lon,
@@ -267,7 +267,7 @@ function addMarkerdam() {
         .catch(error => {
             console.error('마커 데이터 로딩 실패:', error);
         });
-    console.log(marker)
+    // console.log(marker)
 }
 
 //

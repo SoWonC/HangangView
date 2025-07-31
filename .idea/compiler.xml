@@ -8,7 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hangangview" />
-        <module name="project_1108" />
+        <module name="hangang_new" />
       </profile>
     </annotationProcessing>
   </component>
