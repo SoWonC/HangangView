@@ -61,8 +61,8 @@
                 vmap.getView().setZoom(9);
 
                 // 콘솔에 x 및 y 좌표를 출력합니다.
-                console.log(x);
-                console.log(y);
+                // console.log(x);
+                // console.log(y);
             } else {
                 // 특징이 없거나 올바른 레이어에 속하지 않는 경우 false를 반환합니다.
                 return false;

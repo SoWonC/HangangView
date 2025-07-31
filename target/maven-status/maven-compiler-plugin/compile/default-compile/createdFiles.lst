@@ -1,6 +1,7 @@
 egovframework\new_hangang\Service\ConversionService.class
 egovframework\new_hangang\dto\DamDto.class
 egovframework\new_hangang\controller\MainController.class
-egovframework\new_hangang\Service\DamService$1.class
+egovframework\new_hangang\dto\BridgeDto.class
+egovframework\new_hangang\Service\BridgeService.class
 egovframework\new_hangang\controller\ApiController.class
 egovframework\new_hangang\Service\DamService.class
