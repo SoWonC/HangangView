@@ -92,6 +92,17 @@ function toggleBasemap(targetType) {
 }
 
 // === 백지도 토글 ===
+function toggleMap() {
+    if (currentBasemapType === vw.ol3.BasemapType.GRAPHIC) {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    } else {
+        vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
+        currentBasemapType = vw.ol3.BasemapType.GRAPHIC;
+    }
+}
+
+// === 백지도 토글 ===
 function toggleWhiteMap() {
     if (currentBasemapType === vw.ol3.BasemapType.GRAPHIC_WHITE) {
         vmap.setBasemapType(vw.ol3.BasemapType.GRAPHIC);
