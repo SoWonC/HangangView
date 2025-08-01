@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="egovframework.new_hangang.mapper.PrecipitationeMapper">
+
+    <!-- 예시: 전체 조회 -->
+    <select id="selectPrecipitationeAll" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
+        SELECT
+            *
+        FROM rainfall_station
+    </select>
+
+    <select id="selectPrecipitationeSeGy" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
+        SELECT
+            *
+        FROM rainfall_station
+        where addr LIKE '%서울%' OR addr LIKE '%경기%';
+    </select>
+
+</mapper>

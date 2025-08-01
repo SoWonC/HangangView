@@ -9,36 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="7/31">
-      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/BridgeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/DamMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/PrecipitationeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
+    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/BridgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/BridgeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/DamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/DamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/PrecipitationeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/PrecipitationeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/ApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-datasource.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/BridgeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/BridgeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/PrecipitationeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/PrecipitationeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/ApiController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/spring/context-datasource.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/spring/context-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/BridgeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/BridgeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/PrecipitationeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/PrecipitationeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/ApiController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-datasource.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/config/egovframework/springmvc/dispatcher-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +201,7 @@
       <option name="presentableId" value="Default" />
       <updated>1753949766372</updated>
       <workItem from="1753949767489" duration="1917000" />
-      <workItem from="1754008172497" duration="11984000" />
+      <workItem from="1754008172497" duration="13412000" />
     </task>
     <task id="LOCAL-00001" summary="7/31">
       <option name="closed" value="true" />
@@ -232,14 +211,54 @@
       <option name="project" value="LOCAL" />
       <updated>1753951544556</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리">
+      <option name="closed" value="true" />
+      <created>1754023781089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1754023781089</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리">
+      <option name="closed" value="true" />
+      <created>1754023813956</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1754023813956</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="7/31" />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리" />
   </component>
 </project>

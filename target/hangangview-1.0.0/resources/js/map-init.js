@@ -184,11 +184,11 @@ function addMarkerLayers() {
 
 // (다리)수위 마커를 추가하는 함수
 function addMarkerbridge() {
-    console.log("브릿지 마커 함수 실행됨");
+    // console.log("브릿지 마커 함수 실행됨");
     fetch('/hangang/api/bridge')
         .then(response => response.json())
         .then(data => {
-            console.log("받은 다리 데이터:", data);
+            // console.log("받은 다리 데이터:", data);
             data.forEach(dto => {
                 const marker = {
                     x: dto.lon,
@@ -221,7 +221,7 @@ function addMarkerPrecipitatione() {
     fetch('/hangang/api/precipitatione')
         .then(response => response.json())
         .then(data => {
-            console.log("받은 강수 데이터:", data);
+            // console.log("받은 강수 데이터:", data);
             data.forEach(dto => {
                 const marker = {
                     x: dto.lon,
@@ -251,7 +251,7 @@ function addMarkerdam() {
     fetch('/hangang/api/dam')
         .then(response => response.json())
         .then(data => {
-            console.log("받은 댐 데이터:", data);
+            // console.log("받은 댐 데이터:", data);
             data.forEach(dto => {
                 const marker = {
                     x: dto.lon,
