@@ -9,16 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리">
+    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/marker-functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/spring/context-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/config/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/config/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/spring/context-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/spring/context-mapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-datasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-datasource.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/spring/context-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/config/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/config/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/config/dispatcher-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/config/dispatcher-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +87,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat 서버.Tomcat 9.0.107.executor": "Run",
     "git-widget-placeholder": "develop",
     "last_opened_file_path": "D:/sowon/hangangview_new/HangangView/src/main/resources/egovframework/sqlmap/new_hangang/mapper",
@@ -79,9 +96,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "프로젝트",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.40344828",
     "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
@@ -89,6 +106,12 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\sowon\hangangview_new\HangangView\src\main\resources\egovframework\sqlmap\new_hangang\mapper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\sowon\hangangview_new\HangangView\src\main\webapp\WEB-INF\views" />
+      <recent name="D:\sowon\hangangview_new\HangangView\src\main\webapp\resources" />
+      <recent name="D:\sowon\hangangview_new\HangangView\src\main\webapp\resources\js" />
+      <recent name="D:\sowon\hangangview_new\HangangView\src\main\webapp\resources\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="egovframework.new_hangang.mapper" />
@@ -201,7 +224,8 @@
       <option name="presentableId" value="Default" />
       <updated>1753949766372</updated>
       <workItem from="1753949767489" duration="1917000" />
-      <workItem from="1754008172497" duration="13412000" />
+      <workItem from="1754008172497" duration="19392000" />
+      <workItem from="1754031525261" duration="6704000" />
     </task>
     <task id="LOCAL-00001" summary="7/31">
       <option name="closed" value="true" />
@@ -227,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754023813956</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정">
+      <option name="closed" value="true" />
+      <created>1754025551217</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1754025551217</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +291,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="7/31" />
     <MESSAGE value="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리" />
+    <MESSAGE value="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정" />
   </component>
 </project>

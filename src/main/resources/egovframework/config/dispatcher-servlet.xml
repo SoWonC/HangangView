@@ -17,4 +17,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 정적 리소스 매핑 -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- DefaultServletHandler 활성화 -->
+    <mvc:default-servlet-handler />
+
+
 </beans>

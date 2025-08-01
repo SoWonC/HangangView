@@ -61,10 +61,17 @@
             </div>
         </div>
     </div>
+    <div id="marker-controls">
+        <label><input type="checkbox" onchange="togglebridgeMarker(this)" checked> 다리</label><br>
+        <label><input type="checkbox" onchange="toggleDamMarker(this)" checked> 댐</label><br>
+        <label><input type="checkbox" onchange="togglePrecipitationeMarker(this)" checked> 강수량</label><br>
+            <%--        <label><input type="checkbox" onchange="toggleCctvMarker(this)" checked> CCTV</label>--%>
+    </div>
     </c:if>
 
     <!-- =================== 공통 JS =================== -->
     <script src="<c:url value='/resources/js/map-init.js'/>"></script>
+    <script src="<c:url value='/resources/js/marker-functions.js'/>"></script>
     <script src="<c:url value='/resources/js/notice-toggle.js' />"></script>
 </body>
 </html>
