@@ -26,15 +26,15 @@ public class ApiController {
 
     @GetMapping(value = "/dam", produces = "application/json; charset=UTF-8")
     public List<DamDto> dam() {
-        return damService.DamAll(); // JSON으로 응답
+        return damService.damsegy();
     }
 
     @GetMapping(value = "/bridge", produces = "application/json; charset=UTF-8")
     public List<BridgeDto> bridge() {
-        return bridgeService.BridgeAll(); // JSON으로 응답
+        return bridgeService.bridgesegy();
     }
     @GetMapping(value = "/precipitatione", produces = "application/json; charset=UTF-8")
     public List<PrecipitationeDto> Precipitation() {
-        return precipitationeService.PrecipitationeAll(); // JSON으로 응답
+        return precipitationeService.precipitationsegy();
     }
 }

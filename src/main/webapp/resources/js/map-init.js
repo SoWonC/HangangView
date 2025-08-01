@@ -196,7 +196,7 @@ function addMarkerbridge() {
                     epsg: "EPSG:4326",
                     title: `<a href="javascript:openPopupBridge('${dto.dmobscd}');">${dto.obsnm}</a>`,
                     contents: `해발 고도: ${dto.gdt}<br>` + `경보 수위: ${dto.attwl}<br>` + `경고 수위: ${dto.wrnwl}<br>` + `주의 수위: ${dto.almwl}<br>` + `안전 수위: ${dto.srswl}<br>` + `최고 수위: ${dto.pfh}<br>` + `홍수 위험 예고: ${dto.fstnyn}`,
-                    iconUrl: '//img.icons8.com/ultraviolet/40/bridge.png',
+                    iconUrl: '//img.icons8.com/ios-filled/50/bridge.png',
                     text: {
                         offsetX: 0.5,
                         offsetY: 20,
@@ -218,7 +218,6 @@ function addMarkerbridge() {
 
 
 function addMarkerPrecipitatione() {
-
     fetch('/hangang/api/precipitatione')
         .then(response => response.json())
         .then(data => {
@@ -230,7 +229,7 @@ function addMarkerPrecipitatione() {
                     epsg: "EPSG:4326",
                     title: `<a href="javascript:openPopupPrecipitatione('${dto.rfobscd}');">${dto.obsnm}</a>`,
                     contents: `${dto.obsnm}`,
-                    iconUrl: '//img.icons8.com/ultraviolet/40/blur.png',
+                    iconUrl: '//img.icons8.com/ios/100/rain-sensor--v2.png',
                     text: {
                         offsetX: 0.5,
                         offsetY: 20,
@@ -262,7 +261,7 @@ function addMarkerdam() {
                     contents:  `홍수 우려 수위: ${dto.pfh}` +
                         `<br>수위 제한선: ${dto.fldlmtwl}`,
 
-                    iconUrl: '//img.icons8.com/cotton/64/dam.png',
+                    iconUrl: '//img.icons8.com/ios-filled/100/dam.png',
                     text: {
                         offsetX: 0.5,
                         offsetY: 20,

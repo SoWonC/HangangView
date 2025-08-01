@@ -44,7 +44,7 @@
         <div id="vmap"></div>
     </div>
     <!-- 오른쪽 사이드 버튼 영역 -->
-    <div id="buttons" style="position: fixed; top: 18%; right: 2%; z-index: 9999;">
+    <div id="buttons" style="position: fixed; top: 10%; right:7%; z-index: 9999;">
         <div class="card shadow-sm p-3" style="width: 200px;">
             <div class="d-flex flex-column gap-2">
                 <button class="btn btn-sm btn-primary w-100" onclick="toggleAllMarkers()">전체 보기</button>
@@ -57,7 +57,7 @@
                 <button class="btn btn-sm btn-danger w-100" onclick="hideAllMarkers();">전체 지우기</button>
             </div>
             <div class="mt-3">
-                <input type="text" id="param" class="form-control" placeholder="검색어 입력">
+                <input type="text" id="param" class="form-control" placeholder="">
             </div>
         </div>
     </div>

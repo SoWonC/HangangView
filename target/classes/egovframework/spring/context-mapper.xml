@@ -1,8 +1,20 @@
-<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource"/>
-	<property name="mapperLocations" value="classpath*:egovframework/sqlmap/**/*_SQL.xml"/>
-</bean>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-<property name="basePackage" value="egovframework.new_hangang.**.mapper"/>
-</bean>
+	<!-- MyBatis SqlSessionFactoryBean 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/> <!-- context-datasource.xml 에서 정의된 dataSource -->
+		<property name="mapperLocations" value="classpath*:egovframework/sqlmap/new_hangang/mapper/*_SQL.xml"/>
+
+	</bean>
+
+	<!-- Mapper Interface 스캔 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="egovframework.new_hangang.mapper"/>
+	</bean>
+
+</beans>

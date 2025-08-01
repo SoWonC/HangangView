@@ -25,4 +25,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- ✅ 설정 파일 import -->
+    <import resource="classpath:/egovframework/spring/context-datasource.xml"/>
+    <import resource="classpath:/egovframework/spring/context-mapper.xml"/>
+
+
 </beans>
