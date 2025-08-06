@@ -21,7 +21,7 @@
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
         <a class="navbar-brand" href="#!">NEW_HANGANHVIEW</a>
-        <a class="btn btn-primary" href="#signup">Sign Up</a>
+<%--        <a class="btn btn-primary" href="#signup">Sign Up</a>--%>
     </div>
 </nav>
 
@@ -97,10 +97,6 @@
             <button class="btn btn-sm btn-outline-success w-100" onclick="toggleHybridMap();">하이브리드</button>
             <button class="btn btn-sm btn-success w-100" onclick="showAllMarkers();">전체 표시</button>
             <button class="btn btn-sm btn-danger w-100" onclick="hideAllMarkers();">전체 지우기</button>
-        </div>
-
-        <div class="mt-3">
-            <input type="text" id="param" class="form-control" placeholder="검색어 입력">
         </div>
 
         <hr class="my-3"/>

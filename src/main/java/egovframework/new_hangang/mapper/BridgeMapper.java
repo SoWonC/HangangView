@@ -7,4 +7,7 @@ import java.util.List;
 public interface BridgeMapper {
 //    List<BridgeDto> selectAllBridges();
     List<BridgeDto> selectBridgesSeGy();
+
+    List<BridgeDto> findBridge(String wlobscd);
+
 }

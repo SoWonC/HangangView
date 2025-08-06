@@ -44,16 +44,6 @@ function togglePrecipitationeMarker(checkbox) {
     }
 }
 
-function toggleCctvMarker(checkbox) {
-    if (checkbox.checked) {
-        cctvMarkerLayer.showAllMarker();
-        isCctvMarkerVisible = true;
-    } else {
-        cctvMarkerLayer.hideAllMarker();
-        isCctvMarkerVisible = false;
-    }
-}
-
 
 function hideAllMarkers() {
     bridgeMarkerLayer.hideAllMarker();
@@ -134,7 +124,7 @@ function toggleHybridMap() {
 
 // === 팝업/선택 마커 ===
 function showPopup() {
-    [bridgeMarkerLayer, PrecipitationeMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
+    [bridgeMarkerLayer, PrecipitationeMarkerLayer, damMarkerLayer].forEach(layer => {
         layer.showPop(selectMarker);
     });
 }
@@ -186,6 +176,17 @@ function showMarker() {
     $('#param').val('');
 
 }
+
+function openPopupBridge(asd) {
+    window.open("http://localhost:8081/hangang/api/openpopupbridge?wlobscd=" + asd, "_blank", "width=1200, height=600");
+}
+function openPopupdam(asd) {
+    window.open("http://localhost:8081/hangang/api/openpopupdam?dmobscd=" + asd, "_blank", "width=1200, height=600");
+}
+function openPopupPrecipitatione(asd) {
+    window.open("http://localhost:8081/hangang/api/openpopupprecipitatione?rfobscd=" + asd, "_blank", "width=1200, height=600");
+}
+
 
 function isSelectMarker() {
     true;

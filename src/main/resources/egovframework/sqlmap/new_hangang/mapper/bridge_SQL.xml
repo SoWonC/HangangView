@@ -8,15 +8,34 @@
     <!-- 예시: 전체 조회 -->
     <select id="selectAllBridges" resultType="egovframework.new_hangang.dto.BridgeDto">
         SELECT
-            *
+            dmobscd,
+            wlobscd,
+            obsnm,
+            addr,
+            etcaddr,
+            lon,
+            lat,
+            gdt,
+            attwl,
+            wrnwl,
+            almwl,
+            srswl,
+            pfh,
+            fstnyn
         FROM bridge_water_level
     </select>
 
     <select id="selectBridgesSeGy" resultType="egovframework.new_hangang.dto.BridgeDto">
-        SELECT
-            *
+        SELECT *
         FROM bridge_water_level
-        where addr LIKE '%서울%' OR addr LIKE '%경기%';
+        where addr LIKE '%서울%'
+           OR addr LIKE '%경기%';
+    </select>
+
+    <select id="findBridge" resultType="egovframework.new_hangang.dto.BridgeDto">
+        SELECT *
+        FROM bridge_water_level
+        where wlobscd = #{wlobscd}
     </select>
 
 </mapper>

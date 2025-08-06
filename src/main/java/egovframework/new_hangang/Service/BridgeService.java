@@ -21,4 +21,9 @@ public class BridgeService {
         List<BridgeDto> dbdata = bridgeMapper.selectBridgesSeGy();
         return (dbdata == null) ? new ArrayList<>() : dbdata;
     }
+
+    public List<BridgeDto> findbybridge(String wlobscd) {
+        List<BridgeDto>  dbdata = bridgeMapper.findBridge(wlobscd);
+        return (dbdata == null) ? new ArrayList<>() : dbdata;
+    }
 }
