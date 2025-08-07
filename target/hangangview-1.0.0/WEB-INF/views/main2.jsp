@@ -111,9 +111,6 @@
             <label class="form-check-label d-block">
                 <input type="checkbox" class="form-check-input me-1" onchange="togglePrecipitationeMarker(this)" checked> 강수량
             </label>
-            <%-- <label class="form-check-label d-block">
-              <input type="checkbox" class="form-check-input me-1" onchange="toggleCctvMarker(this)" checked> CCTV
-            </label> --%>
         </div>
     </div>
 </div>

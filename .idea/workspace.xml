@@ -9,23 +9,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정">
+    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/DamDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/DetailController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/dto/DamApiDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/dto/DamData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/dto/DamDatas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/bridge.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/dam-graph.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/dam-table.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/dam.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/precipitatione.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/damStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/damChart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/BridgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/BridgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/DamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/DamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/PrecipitationeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/Service/PrecipitationeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/ApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/ApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/BridgeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/BridgeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/DamMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/DamMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/PrecipitationeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/mapper/PrecipitationeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/dto/DamDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/dto/DamDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/dam/dam2.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main2.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/marker-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/marker-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/BridgeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/BridgeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/DamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/DamService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/PrecipitationeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/Service/PrecipitationeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/ApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/BridgeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/BridgeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/DamMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/DamMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/PrecipitationeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/mapper/PrecipitationeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/BridgeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/BridgeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/DamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/DamService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/PrecipitationeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/Service/PrecipitationeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/ApiController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/ApiController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/BridgeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/BridgeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/DamMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/DamMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/PrecipitationeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/mapper/PrecipitationeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/lib/commons-lang3-3.14.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/dam/dam2.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/marker-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/marker-functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/scripts.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +65,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -71,29 +102,30 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.hangangview [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.hangangview [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat 서버.Tomcat 9.0.107.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/sowon/hangangview_new/HangangView/src/main/resources/egovframework/sqlmap/new_hangang/mapper&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.40344828&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.hangangview [clean].executor": "Run",
+    "Maven.hangangview [package].executor": "Run",
+    "Maven.hangangview [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat 서버.Tomcat 9.0.107.executor": "Run",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "D:/sowon/hangangview_new/HangangView/src/main/resources/egovframework/sqlmap/new_hangang/mapper",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.40344828",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\sowon\hangangview_new\HangangView\src\main\resources\egovframework\sqlmap\new_hangang\mapper" />
@@ -105,6 +137,8 @@
       <recent name="D:\sowon\hangangview_new\HangangView\src\main\webapp\resources\css" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="egovframework.new_hangang.Service" />
+      <recent name="egovframework.new_hangang.dto" />
       <recent name="egovframework.new_hangang.mapper" />
     </key>
   </component>
@@ -217,6 +251,7 @@
       <workItem from="1753949767489" duration="1917000" />
       <workItem from="1754008172497" duration="19392000" />
       <workItem from="1754031525261" duration="6704000" />
+      <workItem from="1754526030688" duration="12220000" />
     </task>
     <task id="LOCAL-00001" summary="7/31">
       <option name="closed" value="true" />
@@ -296,6 +331,11 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main2.jsp</url>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/detail/dam.jsp</url>
+          <line>6</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

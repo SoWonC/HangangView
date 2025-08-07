@@ -7,6 +7,7 @@ import egovframework.new_hangang.dto.BridgeDto;
 import egovframework.new_hangang.dto.DamDto;
 import egovframework.new_hangang.dto.PrecipitationeDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,21 +35,18 @@ public class ApiController {
     public List<BridgeDto> bridge() {
         return bridgeService.bridgesegy();
     }
+
     @GetMapping(value = "/precipitatione", produces = "application/json; charset=UTF-8")
     public List<PrecipitationeDto> precipitation() {
         return precipitationeService.precipitationsegy();
     }
 
 
-    @GetMapping(value = "/openpopupdam", produces = "application/json; charset=UTF-8")
-    public List<DamDto> openpopupdam(@RequestParam("dmobscd") String dmobscd) {
-        return damService.findbydam(dmobscd);
-    }
-
     @GetMapping(value = "/openpopupbridge", produces = "application/json; charset=UTF-8")
     public List<BridgeDto> openpopupbridge(@RequestParam("wlobscd") String wlobscd) {
         return bridgeService.findbybridge(wlobscd);
     }
+
     @GetMapping(value = "/openpopupprecipitatione", produces = "application/json; charset=UTF-8")
     public List<PrecipitationeDto> openpopupprecipitatione(@RequestParam("rfobscd") String rfobscd) {
         return precipitationeService.findbybridge(rfobscd);

@@ -106,29 +106,16 @@ function loadMarkers(url, layer, dtoToMarker, options = {}) {
         .catch(err => console.error('마커 로딩 실패:', err));
 }
 
-
-// === 개별 마커 정의 ===
-// function addMarkerbridge() {
-//     loadMarkers('/hangang/api/bridge', bridgeMarkerLayer, dto => createMarker(
-//         dto.lon, dto.lat,
-//         `<a href="javascript:openPopupBridge('${dto.dmobscd}');">${dto.obsnm}</a>`,
-//         `해발 고도: ${dto.gdt}<br>
-//          경보 수위: ${dto.attwl}<br>
-//          경고 수위: ${dto.wrnwl}<br>
-//          주의 수위: ${dto.almwl}<br>
-//          안전 수위: ${dto.srswl}<br>
-//          최고 수위: ${dto.pfh}<br>
-//          홍수 위험 예고: ${dto.fstnyn}`,
-//         '//img.icons8.com/ios-filled/50/bridge.png'
-//     ));
-// }
 function addMarkerbridge() {
     loadMarkers('/hangang/api/bridge', bridgeMarkerLayer, dto => {
+
+        console.log(dto.wlobscd)
         const isCluster = dto.isCluster;
+
 
         const title = isCluster
             ? `<span>${dto.obsnm}</span>`
-            : `<a href="javascript:openPopupBridge('${dto.dmobscd}');">${dto.obsnm}</a>`;
+            : `<a href="javascript:openPopupBridge('${dto.wlobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
             ? dto.members.map(d => d.obsnm).join('<br>')
@@ -144,22 +131,13 @@ function addMarkerbridge() {
     }, { enableCluster: true });
 }
 
-
-// function addMarkerdam() {
-//     loadMarkers('/hangang/api/dam', damMarkerLayer, dto => createMarker(
-//         dto.lon, dto.lat,
-//         `<a href="javascript:openPopupDam('${dto.dmobscd}');">${dto.obsnm}</a>`,
-//         `홍수 우려 수위: ${dto.pfh}<br>수위 제한선: ${dto.fldlmtwl}`,
-//         '//img.icons8.com/ios-filled/100/dam.png'
-//     ));
-// }
 function addMarkerdam() {
     loadMarkers('/hangang/api/dam', damMarkerLayer, dto => {
         const isCluster = dto.isCluster;
 
         const title = isCluster
             ? `<span>${dto.obsnm}</span>`
-            : `<a href="javascript:openPopupDam('${dto.dmobscd}');">${dto.obsnm}</a>`;
+            : `<a href="javascript:openPopupdam('${dto.dmobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
             ? dto.members.map(d => d.obsnm).join('<br>')
@@ -174,14 +152,6 @@ function addMarkerdam() {
 }
 
 
-// function addMarkerPrecipitatione() {
-//     loadMarkers('/hangang/api/precipitatione', PrecipitationeMarkerLayer, dto => createMarker(
-//         dto.lon, dto.lat,
-//         `<a href="javascript:openPopupPrecipitatione('${dto.rfobscd}');">${dto.obsnm}</a>`,
-//         `${dto.obsnm}`,
-//         '//img.icons8.com/ios/100/rain-sensor--v2.png'
-//     ));
-// }
 function addMarkerPrecipitatione() {
     loadMarkers('/hangang/api/precipitatione', PrecipitationeMarkerLayer, dto => {
         const isCluster = dto.isCluster;
@@ -208,4 +178,4 @@ addMarkerLayers();
 addMarkerbridge();
 addMarkerPrecipitatione();
 addMarkerdam();
-// addMarkercctv();
+
