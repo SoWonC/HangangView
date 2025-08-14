@@ -10893,3 +10893,25 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+/* 기본(떠있는 카드) */
+.marker-info-card{
+    position:absolute; right:16px; top:16px; z-index:1050;
+    width:min(360px, 92vw);
+    border-radius:16px; overflow:hidden;
+    background:color-mix(in oklab, var(--bs-body-bg) 84%, transparent);
+    border:1px solid color-mix(in oklab, var(--bs-body-color) 12%, transparent);
+    box-shadow:0 10px 30px rgba(0,0,0,.14);
+    backdrop-filter: blur(6px);
+}
+.marker-info-card .mic-header{ display:flex; align-items:center; justify-content:space-between; padding:.75rem .75rem; }
+.marker-info-card .mic-title{ font-weight:700; display:flex; align-items:center; }
+.marker-info-card .mic-body{ padding:0 .75rem .5rem .75rem; }
+.marker-info-card .mic-actions{ padding:.5rem .75rem .75rem .75rem; display:flex; gap:.5rem; justify-content:flex-end; }
+
+/* 임베디드(좌측 패널 아래) */
+.marker-info-card.embedded{
+    position: static; right:auto; top:auto;
+    width: 100%; margin-top: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    border-radius: 12px; backdrop-filter: none;
+}

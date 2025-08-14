@@ -33,38 +33,37 @@ function addMarkerLayers() {
     vmap.addLayer(cctvMarkerLayer);
 }
 
-function clusterMarkers(data) {
-    const zoom = vmap.getView().getZoom();
-
-    // 줌 레벨별 클러스터 간격 설정
-    let gridSize;
-    if (zoom < 7) gridSize = 2.0;        // 전국 단위 1~2개 클러스터
-    else if (zoom < 8) gridSize = 1.0;   // 도 단위
-    else if (zoom < 10) gridSize = 0.5;  // 시/군 단위
-    else if (zoom < 12) gridSize = 0.1;  // 읍/면 단위
-    else gridSize = 0.02;                // 상세 마커
-
-    const clusters = {};
-    data.forEach(dto => {
-        const key = `${Math.floor(dto.lat / gridSize)}_${Math.floor(dto.lon / gridSize)}`;
-        if (!clusters[key]) clusters[key] = [];
-        clusters[key].push(dto);
-    });
-
-    return Object.values(clusters).map(group => {
-        const avgLat = group.reduce((sum, d) => sum + d.lat, 0) / group.length;
-        const avgLon = group.reduce((sum, d) => sum + d.lon, 0) / group.length;
-
-        return {
-            lon: avgLon,
-            lat: avgLat,
-            obsnm: `${group.length}개 시설`,
-            isCluster: true,
-            members: group
-        };
-    });
-}
-
+// function clusterMarkers(data) {
+//     const zoom = vmap.getView().getZoom();
+//
+//     // 줌 레벨별 클러스터 간격 설정
+//     let gridSize;
+//     if (zoom < 7) gridSize = 2.0;        // 전국 단위 1~2개 클러스터
+//     else if (zoom < 8) gridSize = 1.0;   // 도 단위
+//     else if (zoom < 10) gridSize = 0.5;  // 시/군 단위
+//     else if (zoom < 12) gridSize = 0.1;  // 읍/면 단위
+//     else gridSize = 0.02;                // 상세 마커
+//
+//     const clusters = {};
+//     data.forEach(dto => {
+//         const key = `${Math.floor(dto.lat / gridSize)}_${Math.floor(dto.lon / gridSize)}`;
+//         if (!clusters[key]) clusters[key] = [];
+//         clusters[key].push(dto);
+//     });
+//
+//     return Object.values(clusters).map(group => {
+//         const avgLat = group.reduce((sum, d) => sum + d.lat, 0) / group.length;
+//         const avgLon = group.reduce((sum, d) => sum + d.lon, 0) / group.length;
+//
+//         return {
+//             lon: avgLon,
+//             lat: avgLat,
+//             obsnm: `${group.length}개 시설`,
+//             isCluster: true,
+//             members: group
+//         };
+//     });
+// }
 
 
 // === 공통 마커 생성 함수 ===
@@ -74,44 +73,85 @@ function createMarker(x, y, title, contents, iconUrl) {
         epsg: "EPSG:4326",
         title,
         contents,
+
         iconUrl,
         text: {
             offsetX: 0.5,
             offsetY: 20,
             font: '12px Calibri, sans-serif',
-            fill: { color: '#000' },
-            stroke: { color: '#fff', width: 2 }
+            fill: {color: '#000'},
+            stroke: {color: '#fff', width: 2}
         },
-        attr: { id: 'maker01', name: '속성명1' }
+        attr: {id: 'maker01', name: '속성명1'}
     };
 }
 
-// === 공통 fetch 마커 로딩 함수 ===
-function loadMarkers(url, layer, dtoToMarker, options = {}) {
-    const { enableCluster = false, clusterZoom = 11 } = options;
+// VWorld MarkerLayer 대응형 loadMarkers (방어적)
+window.loadMarkers = async function(url, layer, mapDtoToMarker, options = {}) {
+    try {
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText}`);
+        const list = await res.json();
+        if (!Array.isArray(list)) throw new Error('JSON 배열이 아닙니다.');
 
-    fetch(url)
-        .then(res => res.json())
-        .then(data => {
-            layer.removeAllMarker();
+        // 1) 기존 마커 비우기 (레이어별 메서드 차이 방어)
+        if (layer) {
+            if (typeof layer.removeAllMarker === 'function') layer.removeAllMarker();
+            else if (typeof layer.clearMarkers === 'function') layer.clearMarkers();
+            else if (typeof layer.clearAll === 'function') layer.clearAll();
+            else if (typeof layer.clear === 'function') layer.clear();
+            // 없으면 스킵
+        }
 
-            const zoom = vmap.getView().getZoom();
-            const source = (enableCluster && zoom < clusterZoom) ? clusterMarkers(data) : data;
+        // 2) 마커 생성 & 추가
+        const batch = [];
+        for (const dto of list) {
+            const marker = mapDtoToMarker(dto);   // addMarkerbridge() 안의 return createMarker(...)
+            if (!marker) continue;
+            batch.push(marker);
 
-            source.forEach(dto => {
-                const marker = dtoToMarker(dto);
-                layer.addMarker(marker);
-            });
-        })
-        .catch(err => console.error('마커 로딩 실패:', err));
-}
+            if (layer) {
+                if (typeof layer.addMarker === 'function') layer.addMarker(marker);
+                else if (typeof layer.add === 'function') layer.add(marker);
+                // addMarkers 일괄 추가형은 아래에서 처리
+            }
+        }
 
+        // 레이어가 일괄 추가를 지원하면 한 번에 추가
+        if (layer && typeof layer.addMarkers === 'function' && batch.length) {
+            layer.addMarkers(batch);
+        }
+
+        // 3) 클러스터 옵션(지원할 때만)
+        if (options.enableCluster && layer && typeof layer.setCluster === 'function') {
+            layer.setCluster(true);
+        }
+
+    } catch (e) {
+        console.error('마커 로드 실패:', e);
+    }
+};
+
+
+/* ===== 공통: 컨텍스트/에셋 헬퍼 ===== */
+// JSP에서 내려준 APP_CTX 사용(없으면 '/')
+const CTX = (window.APP_CTX || '/');
+// '/resources/...' 앞에 컨텍스트 자동 부착
+const asset = (p) => CTX + String(p).replace(/^\//, '');
+
+// 아이콘 경로 상수
+const ICONS = {
+    bridge: asset('/resources/assets/img/bridge.svg'),
+    dam:    asset('/resources/assets/img/dam.svg'),
+    rain:   asset('/resources/assets/img/water.svg'),
+    // 필요하면 클러스터 전용 별도 지정
+    cluster: asset('/resources/assets/img/cluster.svg')
+};
+
+/* ===== 다리 마커 ===== */
 function addMarkerbridge() {
-    loadMarkers('/hangang/api/bridge', bridgeMarkerLayer, dto => {
-
-        console.log(dto.wlobscd)
-        const isCluster = dto.isCluster;
-
+    loadMarkers(`${CTX}api/bridge`, bridgeMarkerLayer, (dto) => {
+        const isCluster = dto.isCluster === true;
 
         const title = isCluster
             ? `<span>${dto.obsnm}</span>`
@@ -120,20 +160,23 @@ function addMarkerbridge() {
         const contents = isCluster
             ? dto.members.map(d => d.obsnm).join('<br>')
             : `해발 고도: ${dto.gdt}<br>
-               경보 수위: ${dto.attwl}<br>
-               경고 수위: ${dto.wrnwl}<br>
-               주의 수위: ${dto.almwl}<br>
-               안전 수위: ${dto.srswl}<br>
-               최고 수위: ${dto.pfh}<br>
-               홍수 위험 예고: ${dto.fstnyn}`;
+         경보 수위: ${dto.attwl}<br>
+         경고 수위: ${dto.wrnwl}<br>
+         주의 수위: ${dto.almwl}<br>
+         안전 수위: ${dto.srswl}<br>
+         최고 수위: ${dto.pfh}<br>
+         홍수 위험 예고: ${dto.fstnyn}`;
 
-        return createMarker(dto.lon, dto.lat, title, contents, '//img.icons8.com/ios-filled/50/bridge.png');
+        const iconUrl = isCluster ? ICONS.bridge : ICONS.bridge; // 원하면 클러스터는 ICONS.cluster로
+
+        return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
     }, { enableCluster: true });
 }
 
+/* ===== 댐 마커 ===== */
 function addMarkerdam() {
-    loadMarkers('/hangang/api/dam', damMarkerLayer, dto => {
-        const isCluster = dto.isCluster;
+    loadMarkers(`${CTX}api/dam`, damMarkerLayer, (dto) => {
+        const isCluster = dto.isCluster === true;
 
         const title = isCluster
             ? `<span>${dto.obsnm}</span>`
@@ -143,18 +186,16 @@ function addMarkerdam() {
             ? dto.members.map(d => d.obsnm).join('<br>')
             : `홍수 우려 수위: ${dto.pfh}<br>수위 제한선: ${dto.fldlmtwl}`;
 
-        const iconUrl = isCluster
-            ? '//img.icons8.com/emoji/48/large-blue-circle.png'
-            : '//img.icons8.com/ios-filled/100/dam.png';
+        const iconUrl = isCluster ? ICONS.dam : ICONS.dam;
 
         return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
     }, { enableCluster: true });
 }
 
-
+/* ===== 강우 마커 ===== */
 function addMarkerPrecipitatione() {
-    loadMarkers('/hangang/api/precipitatione', PrecipitationeMarkerLayer, dto => {
-        const isCluster = dto.isCluster;
+    loadMarkers(`${CTX}api/precipitatione`, PrecipitationeMarkerLayer, (dto) => {
+        const isCluster = dto.isCluster === true;
 
         const title = isCluster
             ? `<span>${dto.obsnm}</span>`
@@ -164,9 +205,7 @@ function addMarkerPrecipitatione() {
             ? dto.members.map(d => d.obsnm).join('<br>')
             : `${dto.obsnm}`;
 
-        const iconUrl = isCluster
-            ? '//img.icons8.com/emoji/48/large-green-circle.png'
-            : '//img.icons8.com/ios/100/rain-sensor--v2.png';
+        const iconUrl = isCluster ? ICONS.rain : ICONS.rain;
 
         return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
     }, { enableCluster: true });
