@@ -34,34 +34,49 @@ function addMarkerLayers() {
 }
 
 function clusterMarkers(data) {
-    const zoom = vmap.getView().getZoom();
+    const view = vmap.getView();
+    const zoom = view.getZoom();
+    const res  = view.getResolution?.();     // m/px (EPSG:3857 가정)
+    const px   = 64;                          // 클러스터 반경(픽셀)
+    const radiusM = res ? res * px : Infinity;
 
-    // 줌 레벨별 클러스터 간격 설정
+    // 500m 이하 → 클러스터 OFF: 개별 마커 그대로 반환
+    if (radiusM <= 3000) {
+        return data.map(d => ({ ...d, isCluster: false }));
+    }
+
+    // 클러스터 ON일 때만 gridSize 사용 (도 단위)
     let gridSize;
-    if (zoom < 7) gridSize = 2.0;        // 전국 단위 1~2개 클러스터
-    else if (zoom < 8) gridSize = 1.0;   // 도 단위
-    else if (zoom < 10) gridSize = 0.5;  // 시/군 단위
-    else if (zoom < 12) gridSize = 0.1;  // 읍/면 단위
-    else gridSize = 0.02;                // 상세 마커
+    if (zoom < 6)       gridSize = 3.0;   // 전국
+    else if (zoom < 8)  gridSize = 1.5;   // 광역
+    else if (zoom < 10) gridSize = 0.5;   // 시/군
+    else if (zoom < 12) gridSize = 0.15;  // 읍/면/동
+    else if (zoom < 13) gridSize = 0.05;  // 상세
+    else                gridSize = 0.01;  // 아주 촘촘 (0 금지)
+
+    const toNum = v => { const n = Number(v); return Number.isFinite(n) ? n : null; };
 
     const clusters = {};
-    data.forEach(dto => {
-        const key = `${Math.floor(dto.lat_dd / gridSize)}_${Math.floor(dto.lon_dd / gridSize)}`;
+    for (const dto of data) {
+        // lat_dd / lon_dd 또는 latDd / lonDd 둘 다 대응
+        const lat = toNum(dto.lat_dd ?? dto.latDd ?? dto.lat);
+        const lon = toNum(dto.lon_dd ?? dto.lonDd ?? dto.lon);
+        if (lat == null || lon == null) continue;
+
+        const key = `${Math.floor(lat / gridSize)}_${Math.floor(lon / gridSize)}`;
         if (!clusters[key]) clusters[key] = [];
-        clusters[key].push(dto);
-    });
+        clusters[key].push({ ...dto, lat_dd: lat, lon_dd: lon });
+    }
 
     return Object.values(clusters).map(group => {
         if (group.length === 1) {
-            return group[0];
+            return { ...group[0], isCluster: false };
         }
-
-        const avgLat = group.reduce((sum, d) => sum + d.lat_dd, 0) / group.length;
-        const avgLon = group.reduce((sum, d) => sum + d.lon_dd, 0) / group.length;
-
+        const avgLat = group.reduce((s, d) => s + d.lat_dd, 0) / group.length;
+        const avgLon = group.reduce((s, d) => s + d.lon_dd, 0) / group.length;
         return {
-            lon_dd: avgLon,
             lat_dd: avgLat,
+            lon_dd: avgLon,
             obsnm: `${group.length}개 시설`,
             isCluster: true,
             count: group.length,
@@ -69,6 +84,7 @@ function clusterMarkers(data) {
         };
     });
 }
+
 
 
 // === 공통 마커 생성 함수 ===

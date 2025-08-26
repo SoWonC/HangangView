@@ -7,23 +7,21 @@
 
     <!-- 예시: 전체 조회 -->
     <select id="selectAllDam" resultType="egovframework.new_hangang.dto.DamDto">
-        SELECT
-            *
+        SELECT *
         FROM dam_info
     </select>
 
     <select id="selectDamSeGy" resultType="egovframework.new_hangang.dto.DamDto">
-        SELECT
-            *
+        SELECT *
         FROM dam_info
-        where addr LIKE '%서울%' OR addr LIKE '%경기%';
+        where addr LIKE '%서울%'
+           OR addr LIKE '%경기%';
     </select>
 
     <select id="selectfindDam" resultType="egovframework.new_hangang.dto.DamDto">
-        SELECT
-            *
+        SELECT *
         FROM dam_info
-        where dmobscd =  #{dmobscd}
+        where dmobscd = #{dmobscd}
     </select>
 
 </mapper>

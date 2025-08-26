@@ -9,11 +9,6 @@ function toggleMarker(layer, stateVar) {
     }
 }
 
-function toggleAllMarkers() {
-    areAllMarkersVisible ? hideAllMarkers() : showAllMarkers();
-    areAllMarkersVisible = !areAllMarkersVisible;
-}
-
 function togglebridgeMarker(checkbox) {
     if (checkbox.checked) {
         bridgeMarkerLayer.showAllMarker();

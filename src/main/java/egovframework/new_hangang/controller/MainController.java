@@ -8,6 +8,6 @@ public class MainController {
 
     @RequestMapping("/main.do")
     public String mainView() {
-        return "main2";  // /WEB-INF/views/main.jsp
+        return "main";  // /WEB-INF/views/main.jsp
     }
 }

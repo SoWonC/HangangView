@@ -14,6 +14,8 @@
     <select id="selectBridgesSeGy" resultType="egovframework.new_hangang.dto.BridgeDto">
         SELECT *
         FROM waterlevel_info
+        where addr LIKE '%서울%'
+           OR addr LIKE '%경기%';
     </select>
 
     <select id="findBridge" resultType="egovframework.new_hangang.dto.BridgeDto">

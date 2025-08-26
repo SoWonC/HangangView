@@ -14,6 +14,8 @@
     <select id="selectPrecipitationeSeGy" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
         SELECT *
         FROM rainfall_info
+        where addr LIKE '%서울%'
+           OR addr LIKE '%경기%';
     </select>
 
     <select id="findPrecipitatione" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
