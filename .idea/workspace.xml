@@ -9,28 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="feat: DB CSV 및 create SQL 추가, DTO/매퍼 및 마커 로직 개선">
+    <list default="true" id="8f4848e6-a430-468e-96fb-8aaf8df03687" name="변경" comment="feat: 클러스터링 세분화 및 이미지 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/egovframework/new_hangang/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/main2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/cluster.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/cluster.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/dam.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/img/dam.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/map-init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/marker-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/marker-functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Dam_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/Precipitatione_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/sqlmap/new_hangang/mapper/bridge_SQL.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/assets/img/cluster.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/assets/img/cluster.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/egovframework/new_hangang/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/classes/egovframework/new_hangang/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/WEB-INF/views/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/assets/img/dam.svg" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/assets/img/dam.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/map-init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/marker-functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/hangangview-1.0.0/resources/js/marker-functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -345,7 +331,7 @@
       <workItem from="1756114782689" duration="169000" />
       <workItem from="1756165983659" duration="1244000" />
       <workItem from="1756174902208" duration="2055000" />
-      <workItem from="1756181317412" duration="8396000" />
+      <workItem from="1756181317412" duration="9867000" />
     </task>
     <task id="LOCAL-00001" summary="7/31">
       <option name="closed" value="true" />
@@ -387,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756190341384</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: 클러스터링 세분화 및 이미지 변경">
+      <option name="closed" value="true" />
+      <created>1756193664561</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756193664561</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,7 +423,8 @@
     <MESSAGE value="feat: DB 연결 및 Bridge/Dam/Precipitation 모듈 통합 설정 완료&#10;&#10;- context-datasource.xml, context-mapper.xml 등 설정 파일 수정&#10;- ApiController 및 각 Service, Mapper, SQL 파일 추가/수정&#10;- main.jsp, map-init.js 연동 처리" />
     <MESSAGE value="refactor: MyBatis 세션 팩토리 설정 정리 및 mapper 경로 수정" />
     <MESSAGE value="feat: DB CSV 및 create SQL 추가, DTO/매퍼 및 마커 로직 개선" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: DB CSV 및 create SQL 추가, DTO/매퍼 및 마커 로직 개선" />
+    <MESSAGE value="feat: 클러스터링 세분화 및 이미지 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 클러스터링 세분화 및 이미지 변경" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

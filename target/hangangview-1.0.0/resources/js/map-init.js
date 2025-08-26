@@ -20,6 +20,72 @@ vmap.getView().on('change:resolution', () => {
     addMarkerPrecipitatione();
 });
 
+// 지도 클릭 이벤트로 마커 클릭 감지
+vmap.on('singleclick', function(evt) {
+    const pixel = evt.pixel;
+    let foundMarker = null;
+    
+    // 각 마커 레이어에서 클릭된 마커 찾기
+    const layers = [
+        { layer: bridgeMarkerLayer, type: 'bridge' },
+        { layer: damMarkerLayer, type: 'dam' },
+        { layer: PrecipitationeMarkerLayer, type: 'rain' }
+    ];
+    
+    for (const layerInfo of layers) {
+        if (foundMarker) break;
+        
+        try {
+            const markers = layerInfo.layer.getMarkers ? layerInfo.layer.getMarkers() : [];
+            
+            for (const marker of markers) {
+                // 마커 좌표를 화면 좌표로 변환
+                const coord = ol.proj.transform([marker.x, marker.y], 'EPSG:4326', vmap.getView().getProjection());
+                const markerPixel = vmap.getPixelFromCoordinate(coord);
+                
+                if (markerPixel) {
+                    const distance = Math.sqrt(
+                        Math.pow(pixel[0] - markerPixel[0], 2) + 
+                        Math.pow(pixel[1] - markerPixel[1], 2)
+                    );
+                    
+                    // 25픽셀 반경 내에서 클릭 감지
+                    if (distance <= 25) {
+                        foundMarker = { marker, type: layerInfo.type };
+                        break;
+                    }
+                }
+            }
+        } catch (e) {
+            console.log('마커 검사 오류:', e);
+        }
+    }
+    
+    // 마커가 감지되면 바로 카드 표시
+    if (foundMarker && foundMarker.marker.attr) {
+        const markerType = foundMarker.marker.attr.markerType || foundMarker.type;
+        const markerCode = foundMarker.marker.attr.markerCode;
+        const isCluster = foundMarker.marker.attr.isCluster;
+        
+        if (isCluster) {
+            expandCluster(foundMarker.marker.x, foundMarker.marker.y, markerType);
+        } else {
+            // 바로 카드 표시 함수 호출
+            if (markerType === 'bridge' && markerCode) {
+                openPopupBridge(markerCode);
+            } else if (markerType === 'dam' && markerCode) {
+                openPopupdam(markerCode);
+            } else if (markerType === 'rain' && markerCode) {
+                openPopupPrecipitatione(markerCode);
+            }
+        }
+        
+        // 기본 팝업 표시 방지
+        evt.stopPropagation();
+        return false;
+    }
+});
+
 
 const bridgeMarkerLayer = new vw.ol3.layer.Marker(vmap);
 const PrecipitationeMarkerLayer = new vw.ol3.layer.Marker(vmap);
@@ -50,7 +116,7 @@ function clusterMarkers(data) {
     if (zoom < 6)       gridSize = 3.0;   // 전국
     else if (zoom < 8)  gridSize = 1.5;   // 광역
     else if (zoom < 10) gridSize = 0.5;   // 시/군
-    else if (zoom < 12) gridSize = 0.15;  // 읍/면/동
+else if (zoom < 12) gridSize = 0.15;  // 읍/면/동
     else if (zoom < 13) gridSize = 0.05;  // 상세
     else                gridSize = 0.01;  // 아주 촘촘 (0 금지)
 
@@ -88,11 +154,11 @@ function clusterMarkers(data) {
 
 
 // === 공통 마커 생성 함수 ===
-function createMarker(x, y, title, contents, iconUrl) {
-    return {
+function createMarker(x, y, title, contents, iconUrl, markerData = {}) {
+    const marker = {
         x, y,
         epsg: "EPSG:4326",
-        title,
+        title: markerData.displayName || title,
         contents,
 
         iconUrl,
@@ -103,8 +169,35 @@ function createMarker(x, y, title, contents, iconUrl) {
             fill: {color: '#000'},
             stroke: {color: '#fff', width: 2}
         },
-        attr: {id: 'maker01', name: '속성명1'}
+        attr: {
+            id: markerData.id || 'marker',
+            name: markerData.name || '마커',
+            markerType: markerData.type || 'unknown',
+            markerCode: markerData.code || '',
+            isCluster: markerData.isCluster || false,
+            members: markerData.members || null
+        },
+        // 마커 클릭 시 바로 카드 표시
+        clickEvent: function() {
+            const markerType = this.attr.markerType;
+            const markerCode = this.attr.markerCode;
+            const isCluster = this.attr.isCluster;
+            
+            if (isCluster) {
+                expandCluster(this.x, this.y, markerType);
+            } else {
+                if (markerType === 'bridge' && markerCode) {
+                    openPopupBridge(markerCode);
+                } else if (markerType === 'dam' && markerCode) {
+                    openPopupdam(markerCode);
+                } else if (markerType === 'rain' && markerCode) {
+                    openPopupPrecipitatione(markerCode);
+                }
+            }
+        }
     };
+    
+    return marker;
 }
 
 // VWorld MarkerLayer 대응형 loadMarkers (방어적)
@@ -224,9 +317,9 @@ function addMarkerPrecipitatione() {
     loadMarkers(`${CTX}api/precipitatione`, PrecipitationeMarkerLayer, (dto) => {
         const isCluster = dto.isCluster === true;
 
-        const title = isCluster 
-            ? `<span onclick="expandCluster(${dto.lon_dd}, ${dto.lat_dd}, 'rain')">${dto.obsnm} (클릭하여 확대)</span>`
-            : `<span onclick="openPopupPrecipitatione('${dto.rfobscd}')">${dto.obsnm}</span>`;
+        const title = isCluster
+            ? `<a href="javascript:expandCluster(${dto.lon_dd}, ${dto.lat_dd}, 'rain');">${dto.obsnm} (클릭하여 확대)</a>`
+            : `<a href="javascript:openPopupPrecipitatione('${dto.rfobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
             ? `포함된 시설: ${dto.members.map(d => d.obsnm).join(', ')}`
@@ -234,12 +327,7 @@ function addMarkerPrecipitatione() {
 
         const iconUrl = isCluster ? ICONS.cluster : ICONS.rain;
 
-        const clickHandler = isCluster 
-            ? () => expandCluster(dto.lon_dd, dto.lat_dd, 'rain')
-            : () => openPopupPrecipitatione(dto.rfobscd);
-
-        const markerId = `rain-${dto.rfobscd || 'cluster'}`;
-        return createMarker(dto.lon_dd, dto.lat_dd, title, contents, iconUrl, clickHandler, markerId);
+        return createMarker(dto.lon_dd, dto.lat_dd, title, contents, iconUrl);
     }, { enableCluster: true });
 }
 
@@ -260,9 +348,113 @@ window.expandCluster = function(lon_dd, lat_dd, type) {
 };
 
 
+// === 마커 클릭 이벤트 유틸리티 함수 ===
+function findMarkerAtPixel(pixel) {
+    const threshold = 20; // 클릭 감지 반경 (픽셀)
+    
+    // 모든 마커 레이어 검사
+    const layers = [
+        {layer: bridgeMarkerLayer, name: 'bridge'},
+        {layer: damMarkerLayer, name: 'dam'},
+        {layer: PrecipitationeMarkerLayer, name: 'rain'}
+    ];
+    
+    for (const {layer, name} of layers) {
+        if (!layer) continue;
+        
+        // VWorld 마커 레이어에서 마커 목록 가져오기
+        let markers = [];
+        if (typeof layer.getMarkers === 'function') {
+            markers = layer.getMarkers() || [];
+        } else if (typeof layer.getAllMarkers === 'function') {
+            markers = layer.getAllMarkers() || [];
+        }
+        
+        // 각 마커와 클릭 지점의 거리 계산
+        for (const marker of markers) {
+            if (!marker || !marker.x || !marker.y) continue;
+            
+            try {
+                // 마커의 지리 좌표를 화면 픽셀로 변환
+                const markerCoord = vmap.getView().getProjection().transform 
+                    ? ol.proj.transform([marker.x, marker.y], 'EPSG:4326', vmap.getView().getProjection())
+                    : [marker.x, marker.y];
+                    
+                const markerPixel = vmap.getPixelFromCoordinate(markerCoord);
+                
+                if (markerPixel) {
+                    const distance = Math.sqrt(
+                        Math.pow(markerPixel[0] - pixel[0], 2) + 
+                        Math.pow(markerPixel[1] - pixel[1], 2)
+                    );
+                    
+                    if (distance <= threshold) {
+                        return {marker, layer, layerName: name};
+                    }
+                }
+            } catch (error) {
+                // 좌표 변환 실패 시 원본 좌표로 시도
+                try {
+                    const markerPixel = vmap.getPixelFromCoordinate([marker.x, marker.y]);
+                    if (markerPixel) {
+                        const distance = Math.sqrt(
+                            Math.pow(markerPixel[0] - pixel[0], 2) + 
+                            Math.pow(markerPixel[1] - pixel[1], 2)
+                        );
+                        
+                        if (distance <= threshold) {
+                            return {marker, layer, layerName: name};
+                        }
+                    }
+                } catch (e) {
+                    console.debug(`마커 위치 계산 실패:`, e);
+                }
+            }
+        }
+    }
+    
+    return null;
+}
+
+// === 마커 클릭 이벤트 처리 ===
+vmap.on('singleclick', function(evt) {
+    const pixel = evt.pixel;
+    const markerInfo = findMarkerAtPixel(pixel);
+    
+    if (markerInfo) {
+        const {marker} = markerInfo;
+        const attr = marker.attr || {};
+        
+        console.log('마커 클릭됨:', attr); // 디버깅용
+        
+        const isCluster = attr.isCluster === true;
+        const code = attr.markerCode;
+        const type = attr.markerType;
+        
+        if (isCluster) {
+            // 클러스터인 경우 확대
+            console.log('클러스터 확대:', marker.x, marker.y, type);
+            expandCluster(marker.x, marker.y, type);
+        } else if (code && type) {
+            // 개별 마커인 경우 팝업 표시
+            console.log('마커 팝업 표시:', type, code);
+            if (type === 'bridge') {
+                openPopupBridge(code);
+            } else if (type === 'dam') {
+                openPopupdam(code);
+            } else if (type === 'rain') {
+                openPopupPrecipitatione(code);
+            }
+        }
+    }
+});
+
 // === 초기 실행 ===
 addMarkerLayers();
 addMarkerbridge();
 addMarkerPrecipitatione();
 addMarkerdam();
+
+console.log('✅ VWorld 마커 클릭 이벤트 핸들러가 활성화되었습니다.');
+console.log('📍 마커를 클릭하면 직접 카드가 표시됩니다 (HTML 링크 방식 대신).');
 
