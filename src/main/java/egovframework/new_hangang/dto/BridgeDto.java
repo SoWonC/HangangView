@@ -8,19 +8,22 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class BridgeDto {
-    private String wlobscd;
-    private String agcnm;
-    private String obsnm;
     private String addr;
+    private String agcnm;
+    private String almwl;
+    private String attwl;
     private String etcaddr;
-    private double lon;
-    private double lat;
-    private double gdt;
-    private double attwl;
-    private double wrnwl;
-    private double almwl;
-    private double srswl;
-    private double pfh;
     private String fstnyn;
+    private String gdt;
+    private String lat;    // DMS
+    private String lon;    // DMS
+    private String obsnm;
+    private String pfh;
+    private String srswl;
+    private String wlobscd;
+    private String wrnwl;
+    private Double lat_dd;  // 십진수
+    private Double lon_dd;  // 십진수
+
 }
 

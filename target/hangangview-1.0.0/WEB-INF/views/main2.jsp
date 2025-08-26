@@ -21,8 +21,9 @@
           rel="stylesheet"/>
 
     <!-- App styles -->
-    <link href="/hangang/resources/assets/favicon.ico" rel="icon" type="image/x-icon"/>
-    <link href="/hangang/resources/css/styles.css" rel="stylesheet"/>
+    <link href="<c:url value='/resources/assets/favicon.ico'/>" rel="icon" type="image/x-icon"/>
+    <link href="<c:url value='/resources/css/styles.css'/>" rel="stylesheet"/>
+
 
     <style>
         :root {
@@ -183,6 +184,7 @@
                     </button>
                 </div>
             </div>
+            <%--            ///////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
             <div id="markerInfoCard" class="marker-info-card embedded d-none" role="dialog" aria-live="polite">
                 <div class="mic-header">
                     <div class="mic-title">
@@ -217,7 +219,6 @@
                 </div>
             </div>
         </aside>
-
 
 
         <!-- RIGHT: Quick actions -->

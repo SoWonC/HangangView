@@ -122,75 +122,8 @@ function toggleHybridMap() {
     }
 }
 
-// === 팝업/선택 마커 ===
-// function showPopup() {
-//     [bridgeMarkerLayer, PrecipitationeMarkerLayer, damMarkerLayer].forEach(layer => {
-//         layer.showPop(selectMarker);
-//     });
-// }
-//
-// function hidePopup() {
-//     markerLayer.hidePop(selectMarker);
-// }
-//
-// function hideMarker() {
-//     markerLayer.hideMarker(selectMarker);
-// }
-//
-// function showMarker() {
-//     [bridgeMarkerLayer, PrecipitationeMarkerLayer, damMarkerLayer, cctvMarkerLayer].forEach(layer => {
-//         layer.showMarker(selectMarker);
-//     });
-//     $('#param').val('');
-// }
-//
-//
-// // === 팝업 이동 ===
-// function openPopup(url, code) {
-//     window.open(url + code, "_blank", "width=1200, height=600");
-// }
-//
-//
-// function showPopup() {
-//     this.bridgeMarkerLayer.showPop(selectMarker);
-//     this.PrecipitationeMarkerLayer.showPop(selectMarker);
-//     this.damMarkerLayer.showPop(selectMarker);
-//     this.cctvMarkerLayer.showPop(selectMarker);
-// }
-//
-// function hidePopup() {
-//     this.markerLayer.hidePop(selectMarker);
-// }
-//
-// function hideMarker() {
-//     this.markerLayer.hideMarker(selectMarker);
-// }
-//
-// // 마커를 보여주는 함수
-// function showMarker() {
-//     this.bridgeMarkerLayer.showMarker(selectMarker);
-//     this.PrecipitationeMarkerLayer.showMarker(selectMarker);
-//     this.damMarkerLayer.showMarker(selectMarker);
-//     this.cctvMarkerLayer.showMarker(selectMarker);
-//     // #param 요소의 값을 초기화하여 선택된 마커 없음을 나타냄
-//     $('#param').val('');
-//
-// }
-//
-// function openPopupBridge(asd) {
-//     window.open("http://localhost:8081/hangang/api/openpopupbridge?wlobscd=" + asd, "_blank", "width=1200, height=600");
-// }
-// function openPopupdam(asd) {
-//     window.open("http://localhost:8081/hangang/api/openpopupdam?dmobscd=" + asd, "_blank", "width=1200, height=600");
-// }
-// function openPopupPrecipitatione(asd) {
-//     window.open("http://localhost:8081/hangang/api/openpopupprecipitatione?rfobscd=" + asd, "_blank", "width=1200, height=600");
-// }
-//
-//
-// function isSelectMarker() {
-//     true;
-// }
+
+
 
 // ===== Marker Info Card API =====
 window.showMarkerInfo = function(data){
@@ -202,8 +135,8 @@ window.showMarkerInfo = function(data){
     setText('mic-level', Number.isFinite(data.waterLevel) ? `${data.waterLevel} m` : (data.waterLevel ?? '-'));
     setText('mic-updated', data.updatedAt || '-');
 
-    const coordTxt = (data.coord && (data.coord.lon!=null) && (data.coord.lat!=null))
-        ? `${Number(data.coord.lon).toFixed(6)}, ${Number(data.coord.lat).toFixed(6)}`
+    const coordTxt = (data.coord && (data.coord.lon_dd!=null) && (data.coord.lat_dd!=null))
+        ? `${Number(data.coord.lon_dd).toFixed(6)}, ${Number(data.coord.lat_dd).toFixed(6)}`
         : '-';
     setText('mic-coord', coordTxt);
 
@@ -222,7 +155,7 @@ window.showMarkerInfo = function(data){
         if (typeof data.zoomTo === 'function') return data.zoomTo();
         if (window.vmap && data.coord) {
             // VWorld는 위경도 기반 이동 API를 제공 (초기화에서 vmap 사용 중) :contentReference[oaicite:2]{index=2}
-            vmap.setCenterAndZoom(data.coord.lon, data.coord.lat, 12);
+            vmap.setCenterAndZoom(data.coord.lon_dd, data.coord.lat_dd, 12);
         }
     };
 
@@ -241,7 +174,7 @@ function findBy(arr, key, val){ return arr.find(d => String(d[key]) === String(v
 /** 기존 팝업 오픈 함수를 카드로 치환 */
 window.openPopupBridge = async function(wlobscd){
     // 목록 API를 재사용해 해당 코드의 DTO를 찾는다 (현재 마커도 이 API에서 만들어짐) :contentReference[oaicite:3]{index=3}
-    const res = await fetch('/hangang/api/bridge');
+    const res = await fetch(`${CTX}api/bridge`);
     const list = await res.json();
     const dto = findBy(list, 'wlobscd', wlobscd);
     if (!dto) return alert('지점을 찾을 수 없습니다.');
@@ -253,14 +186,14 @@ window.openPopupBridge = async function(wlobscd){
         subtitle: dto.city || '한강',
         waterLevel: dto.pfh ?? dto.gdt, // 가용 필드로 임시 노출
         stage: dto.stage || '-',        // 서버에 단계 필드가 있으면 매핑
-        coord: { lon: dto.lon, lat: dto.lat },
+        coord: { lon_dd: dto.lon_dd, lat_dd: dto.lat_dd },
         updatedAt: dto.updatedAt,
-        zoomTo: () => vmap.setCenterAndZoom(dto.lon, dto.lat, 12)
+        zoomTo: () => vmap.setCenterAndZoom(dto.lon_dd, dto.lat_dd, 12)
     });
 };
 
 window.openPopupdam = async function(dmobscd){
-    const res = await fetch('/hangang/api/dam');
+    const res = await fetch(`${CTX}api/dam`);
     const list = await res.json();
     const dto = findBy(list, 'dmobscd', dmobscd);
     if (!dto) return alert('지점을 찾을 수 없습니다.');
@@ -272,14 +205,14 @@ window.openPopupdam = async function(dmobscd){
         subtitle: dto.city || '댐',
         waterLevel: dto.fldlmtwl ?? dto.pfh,
         stage: dto.stage || '-',
-        coord: { lon: dto.lon, lat: dto.lat },
+        coord: { lon_dd: dto.lon_dd, lat_dd: dto.lat_dd },
         updatedAt: dto.updatedAt,
-        zoomTo: () => vmap.setCenterAndZoom(dto.lon, dto.lat, 12)
+        zoomTo: () => vmap.setCenterAndZoom(dto.lon_dd, dto.lat_dd, 12)
     });
 };
 
 window.openPopupPrecipitatione = async function(rfobscd){
-    const res = await fetch('/hangang/api/precipitatione');
+    const res = await fetch(`${CTX}api/precipitatione`);
     const list = await res.json();
     const dto = findBy(list, 'rfobscd', rfobscd);
     if (!dto) return alert('지점을 찾을 수 없습니다.');
@@ -291,8 +224,8 @@ window.openPopupPrecipitatione = async function(rfobscd){
         subtitle: dto.city || '강수',
         waterLevel: dto.value ?? dto.rain ?? '-', // 가용 필드로 임시 노출
         stage: dto.stage || '-',
-        coord: { lon: dto.lon, lat: dto.lat },
+        coord: { lon_dd: dto.lon_dd, lat_dd: dto.lat_dd },
         updatedAt: dto.updatedAt,
-        zoomTo: () => vmap.setCenterAndZoom(dto.lon, dto.lat, 12)
+        zoomTo: () => vmap.setCenterAndZoom(dto.lon_dd, dto.lat_dd, 12)
     });
 };

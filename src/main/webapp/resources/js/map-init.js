@@ -33,37 +33,42 @@ function addMarkerLayers() {
     vmap.addLayer(cctvMarkerLayer);
 }
 
-// function clusterMarkers(data) {
-//     const zoom = vmap.getView().getZoom();
-//
-//     // 줌 레벨별 클러스터 간격 설정
-//     let gridSize;
-//     if (zoom < 7) gridSize = 2.0;        // 전국 단위 1~2개 클러스터
-//     else if (zoom < 8) gridSize = 1.0;   // 도 단위
-//     else if (zoom < 10) gridSize = 0.5;  // 시/군 단위
-//     else if (zoom < 12) gridSize = 0.1;  // 읍/면 단위
-//     else gridSize = 0.02;                // 상세 마커
-//
-//     const clusters = {};
-//     data.forEach(dto => {
-//         const key = `${Math.floor(dto.lat / gridSize)}_${Math.floor(dto.lon / gridSize)}`;
-//         if (!clusters[key]) clusters[key] = [];
-//         clusters[key].push(dto);
-//     });
-//
-//     return Object.values(clusters).map(group => {
-//         const avgLat = group.reduce((sum, d) => sum + d.lat, 0) / group.length;
-//         const avgLon = group.reduce((sum, d) => sum + d.lon, 0) / group.length;
-//
-//         return {
-//             lon: avgLon,
-//             lat: avgLat,
-//             obsnm: `${group.length}개 시설`,
-//             isCluster: true,
-//             members: group
-//         };
-//     });
-// }
+function clusterMarkers(data) {
+    const zoom = vmap.getView().getZoom();
+
+    // 줌 레벨별 클러스터 간격 설정
+    let gridSize;
+    if (zoom < 7) gridSize = 2.0;        // 전국 단위 1~2개 클러스터
+    else if (zoom < 8) gridSize = 1.0;   // 도 단위
+    else if (zoom < 10) gridSize = 0.5;  // 시/군 단위
+    else if (zoom < 12) gridSize = 0.1;  // 읍/면 단위
+    else gridSize = 0.02;                // 상세 마커
+
+    const clusters = {};
+    data.forEach(dto => {
+        const key = `${Math.floor(dto.lat_dd / gridSize)}_${Math.floor(dto.lon_dd / gridSize)}`;
+        if (!clusters[key]) clusters[key] = [];
+        clusters[key].push(dto);
+    });
+
+    return Object.values(clusters).map(group => {
+        if (group.length === 1) {
+            return group[0];
+        }
+
+        const avgLat = group.reduce((sum, d) => sum + d.lat_dd, 0) / group.length;
+        const avgLon = group.reduce((sum, d) => sum + d.lon_dd, 0) / group.length;
+
+        return {
+            lon_dd: avgLon,
+            lat_dd: avgLat,
+            obsnm: `${group.length}개 시설`,
+            isCluster: true,
+            count: group.length,
+            members: group
+        };
+    });
+}
 
 
 // === 공통 마커 생성 함수 ===
@@ -103,9 +108,15 @@ window.loadMarkers = async function(url, layer, mapDtoToMarker, options = {}) {
             // 없으면 스킵
         }
 
-        // 2) 마커 생성 & 추가
+        // 2) 클러스터링 적용 (활성화 시)
+        let processedData = list;
+        if (options.enableCluster) {
+            processedData = clusterMarkers(list);
+        }
+
+        // 3) 마커 생성 & 추가
         const batch = [];
-        for (const dto of list) {
+        for (const dto of processedData) {
             const marker = mapDtoToMarker(dto);   // addMarkerbridge() 안의 return createMarker(...)
             if (!marker) continue;
             batch.push(marker);
@@ -122,7 +133,7 @@ window.loadMarkers = async function(url, layer, mapDtoToMarker, options = {}) {
             layer.addMarkers(batch);
         }
 
-        // 3) 클러스터 옵션(지원할 때만)
+        // 4) VWorld 자체 클러스터 옵션(지원할 때만)
         if (options.enableCluster && layer && typeof layer.setCluster === 'function') {
             layer.setCluster(true);
         }
@@ -154,11 +165,11 @@ function addMarkerbridge() {
         const isCluster = dto.isCluster === true;
 
         const title = isCluster
-            ? `<span>${dto.obsnm}</span>`
+            ? `<a href="javascript:expandCluster(${dto.lon_dd}, ${dto.lat_dd}, 'bridge');">${dto.obsnm} (클릭하여 확대)</a>`
             : `<a href="javascript:openPopupBridge('${dto.wlobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
-            ? dto.members.map(d => d.obsnm).join('<br>')
+            ? `포함된 시설: ${dto.members.map(d => d.obsnm).join(', ')}`
             : `해발 고도: ${dto.gdt}<br>
          경보 수위: ${dto.attwl}<br>
          경고 수위: ${dto.wrnwl}<br>
@@ -167,9 +178,9 @@ function addMarkerbridge() {
          최고 수위: ${dto.pfh}<br>
          홍수 위험 예고: ${dto.fstnyn}`;
 
-        const iconUrl = isCluster ? ICONS.bridge : ICONS.bridge; // 원하면 클러스터는 ICONS.cluster로
+        const iconUrl = isCluster ? ICONS.cluster : ICONS.bridge;
 
-        return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
+        return createMarker(dto.lon_dd, dto.lat_dd, title, contents, iconUrl);
     }, { enableCluster: true });
 }
 
@@ -179,16 +190,16 @@ function addMarkerdam() {
         const isCluster = dto.isCluster === true;
 
         const title = isCluster
-            ? `<span>${dto.obsnm}</span>`
+            ? `<a href="javascript:expandCluster(${dto.lon_dd}, ${dto.lat_dd}, 'dam');">${dto.obsnm} (클릭하여 확대)</a>`
             : `<a href="javascript:openPopupdam('${dto.dmobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
-            ? dto.members.map(d => d.obsnm).join('<br>')
+            ? `포함된 시설: ${dto.members.map(d => d.obsnm).join(', ')}`
             : `홍수 우려 수위: ${dto.pfh}<br>수위 제한선: ${dto.fldlmtwl}`;
 
-        const iconUrl = isCluster ? ICONS.dam : ICONS.dam;
+        const iconUrl = isCluster ? ICONS.cluster : ICONS.dam;
 
-        return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
+        return createMarker(dto.lon_dd, dto.lat_dd, title, contents, iconUrl);
     }, { enableCluster: true });
 }
 
@@ -198,18 +209,34 @@ function addMarkerPrecipitatione() {
         const isCluster = dto.isCluster === true;
 
         const title = isCluster
-            ? `<span>${dto.obsnm}</span>`
+            ? `<a href="javascript:expandCluster(${dto.lon_dd}, ${dto.lat_dd}, 'rain');">${dto.obsnm} (클릭하여 확대)</a>`
             : `<a href="javascript:openPopupPrecipitatione('${dto.rfobscd}');">${dto.obsnm}</a>`;
 
         const contents = isCluster
-            ? dto.members.map(d => d.obsnm).join('<br>')
+            ? `포함된 시설: ${dto.members.map(d => d.obsnm).join(', ')}`
             : `${dto.obsnm}`;
 
-        const iconUrl = isCluster ? ICONS.rain : ICONS.rain;
+        const iconUrl = isCluster ? ICONS.cluster : ICONS.rain;
 
-        return createMarker(dto.lon, dto.lat, title, contents, iconUrl);
+        return createMarker(dto.lon_dd, dto.lat_dd, title, contents, iconUrl);
     }, { enableCluster: true });
 }
+
+// === 클러스터 확대 함수 ===
+window.expandCluster = function(lon_dd, lat_dd, type) {
+    const currentZoom = vmap.getView().getZoom();
+    const newZoom = Math.min(currentZoom + 3, 18); // 최대 줌 레벨 18로 제한
+
+    // 클러스터 위치로 이동하고 줌 인
+    vmap.setCenterAndZoom(lon_dd, lat_dd, newZoom);
+    
+    // 잠시 후 마커를 다시 로드해서 클러스터가 분해되도록 함
+    setTimeout(() => {
+        if (type === 'bridge') addMarkerbridge();
+        else if (type === 'dam') addMarkerdam();
+        else if (type === 'rain') addMarkerPrecipitatione();
+    }, 300);
+};
 
 
 // === 초기 실행 ===

@@ -8,13 +8,15 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class DamDto {
-    private String dmobscd;
     private String addr;
     private String agcnm;
+    private String dmobscd;
     private String etcaddr;
-    private double fldlmtwl;
-    private double lon;
-    private double lat;
+    private String fldlmtwl;
+    private String lat;    // DMS
+    private String lon;    // DMS
     private String obsnm;
-    private double pfh;
+    private String pfh;
+    private Double lat_dd;  // 십진수
+    private Double lon_dd;  // 십진수
 }

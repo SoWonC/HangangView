@@ -4,6 +4,8 @@ D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\con
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\controller\MainController.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\BridgeDto.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\DamApiDto.java
+D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\DamData.java
+D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\DamDatas.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\DamDto.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\dto\PrecipitationeDto.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\mapper\BridgeMapper.java
@@ -11,5 +13,6 @@ D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\map
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\mapper\PrecipitationeMapper.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\Service\BridgeService.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\Service\ConversionService.java
+D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\Service\DamDataService.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\Service\DamService.java
 D:\sowon\hangangview_new\HangangView\src\main\java\egovframework\new_hangang\Service\PrecipitationeService.java

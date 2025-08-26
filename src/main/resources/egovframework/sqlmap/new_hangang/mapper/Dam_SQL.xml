@@ -9,20 +9,20 @@
     <select id="selectAllDam" resultType="egovframework.new_hangang.dto.DamDto">
         SELECT
             *
-        FROM dam
+        FROM dam_info
     </select>
 
     <select id="selectDamSeGy" resultType="egovframework.new_hangang.dto.DamDto">
         SELECT
             *
-        FROM dam
+        FROM dam_info
         where addr LIKE '%서울%' OR addr LIKE '%경기%';
     </select>
 
     <select id="selectfindDam" resultType="egovframework.new_hangang.dto.DamDto">
         SELECT
             *
-        FROM dam
+        FROM dam_info
         where dmobscd =  #{dmobscd}
     </select>
 

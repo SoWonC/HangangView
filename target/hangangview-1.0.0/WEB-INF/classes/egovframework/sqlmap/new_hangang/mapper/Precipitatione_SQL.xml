@@ -8,19 +8,17 @@
     <!-- 예시: 전체 조회 -->
     <select id="selectPrecipitationeAll" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
         SELECT *
-        FROM rainfall_station
+        FROM rainfall_info
     </select>
 
     <select id="selectPrecipitationeSeGy" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
         SELECT *
-        FROM rainfall_station
-        where addr LIKE '%서울%'
-           OR addr LIKE '%경기%';
+        FROM rainfall_info
     </select>
 
     <select id="findPrecipitatione" resultType="egovframework.new_hangang.dto.PrecipitationeDto">
         SELECT *
-        FROM rainfall_station
+        FROM rainfall_info
         where rfobscd = #{rfobscd};
     </select>
 

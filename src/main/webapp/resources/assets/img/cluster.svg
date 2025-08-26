@@ -1,0 +1,28 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="64px" height="64px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier">
+  <!-- 배경 원 -->
+  <circle cx="32" cy="32" r="28" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+  
+  <!-- 내부 원 -->
+  <circle cx="32" cy="32" r="22" fill="#66BB6A" stroke="#388E3C" stroke-width="1.5"/>
+  
+  <!-- 작은 마커들 -->
+  <circle cx="24" cy="24" r="3" fill="#ffffff" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="40" cy="24" r="3" fill="#ffffff" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="32" cy="32" r="3" fill="#ffffff" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="24" cy="40" r="3" fill="#ffffff" stroke="#2E7D32" stroke-width="1"/>
+  <circle cx="40" cy="40" r="3" fill="#ffffff" stroke="#2E7D32" stroke-width="1"/>
+  
+  <!-- 중앙 텍스트 영역 -->
+  <circle cx="32" cy="32" r="8" fill="#ffffff" stroke="#2E7D32" stroke-width="2"/>
+  
+  <!-- '+' 기호 -->
+  <rect x="29" y="26" width="6" height="2" fill="#2E7D32"/>
+  <rect x="31" y="24" width="2" height="6" fill="#2E7D32"/>
+  <rect x="29" y="34" width="6" height="2" fill="#2E7D32"/>
+  <rect x="31" y="36" width="2" height="6" fill="#2E7D32"/>
+</g>
+</svg>

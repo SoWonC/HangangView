@@ -8,11 +8,13 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class PrecipitationeDto {
-    private String rfobscd;
-    private String agcnm;
-    private String obsnm;
     private String addr;
+    private String agcnm;
     private String etcaddr;
-    private double lon;
-    private double lat;
+    private String lat;    // DMS 문자열
+    private String lon;    // DMS 문자열
+    private String obsnm;
+    private String rfobscd;
+    private Double lat_dd;  // 십진수
+    private Double lon_dd;  // 십진수
 }

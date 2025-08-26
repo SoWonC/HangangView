@@ -37,5 +37,8 @@ public class DamDatas {
 
     //수위 제한선*
     private double pfh;
+
+    public DamDatas(String dmobscd, Date ymdhm, double swl, double inf, double sfw, double ecpc, double tototf, String fldlmtwl, String pfh) {
+    }
 }
 
