@@ -186,7 +186,7 @@
             </div>
 
 
-            <%--            ///////////////////////////////////////////////////////////////////////////////////////////////////////// --%>
+            <%--/////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
             <div id="markerInfoCard" class="marker-info-card embedded d-none" role="dialog" aria-live="polite">
                 <div class="mic-header">
                     <div class="mic-title">
@@ -216,6 +216,7 @@
                     </div>
                 </div>
                 <div class="mic-actions">
+                    <button class="btn btn-sm btn-primary" id="mic-zoomBtn2">상세보기</button>
                     <button class="btn btn-sm btn-primary" id="mic-zoomBtn">여기로 줌</button>
                     <button class="btn btn-sm btn-outline-secondary" onclick="hideMarkerInfo()">닫기</button>
                 </div>
